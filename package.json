@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "rimraf dist",
+    "build": "concurrently 'pnpm:build:*'",
     "build:base": "rollup -c",
     "lint:prettier": "prettier --list-different .",
     "lint:code": "eslint --cache .",
@@ -18,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/janghye0k/doumi.git"
+    "url": "https://github.com/janghye0k/doumi"
   },
   "keywords": [
     "util"
@@ -39,6 +40,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@types/jest": "^29.5.11",
     "@types/node": "^20.10.8",
+    "concurrently": "^8.2.2",
     "core-js": "^3.35.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
