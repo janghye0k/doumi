@@ -1,0 +1,66 @@
+{
+  "name": "doumi",
+  "version": "0.0.0",
+  "description": "Javascript Utilities",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build:base": "rollup -c",
+    "lint:prettier": "prettier --list-different .",
+    "lint:code": "eslint --cache .",
+    "lint": "pnpm lint:prettier && pnpm lint:code",
+    "test:only": "jest",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --collectCoverageFrom=\"src/**/*.js\" --coverage",
+    "test": "pnpm test:coverage",
+    "prepare": "husky install",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janghye0k/doumi.git"
+  },
+  "keywords": [
+    "util"
+  ],
+  "author": "JangHyeok Kim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/janghye0k/doumi/issues"
+  },
+  "homepage": "https://github.com/janghye0k/doumi#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.8",
+    "@commitlint/cli": "^18.4.4",
+    "@commitlint/config-conventional": "^18.4.4",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.10.8",
+    "core-js": "^3.35.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-eslint-plugin": "^5.2.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.2",
+    "husky": "^8.0.3",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.2.0",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.9.4",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-esbuild": "^6.1.0",
+    "standard-version": "^9.5.0",
+    "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write --ignore-unknown"
+    ],
+    "src/**/*.{js}": [
+      "eslint --cache --fix"
+    ]
+  }
+}
