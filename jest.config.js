@@ -8,4 +8,4 @@ const config = {
   coverageDirectory: 'coverage',
 };
 
-export default config;
+module.exports = config;
