@@ -23,12 +23,22 @@
   },
   "overrides": [
     {
-      "files": ["lib/rules/*.{js,ts}"],
+      "files": ["src/**/*.{js,ts}"],
       "extends": ["plugin:eslint-plugin/rules-recommended"]
     },
     {
-      "files": ["tests/lib/rules/*.{js,ts}"],
+      "files": ["tests/**/*.{js,ts}"],
       "extends": ["plugin:eslint-plugin/tests-recommended"]
+    },
+    {
+      "files": ["**/tests/**", "**/*.test.**"],
+      "settings": {
+        "import/resolver": {
+          "jest": {
+            "jestConfigFile": "./jest.config.js"
+          }
+        }
+      }
     }
   ]
 }

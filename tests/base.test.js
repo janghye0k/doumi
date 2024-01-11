@@ -22,7 +22,7 @@ import {
   isUndefined,
   isWeakMap,
   isWeakSet,
-} from '../src/index';
+} from 'index';
 
 describe('BASE DOUMI TEST', () => {
   it('typeOf', () => {

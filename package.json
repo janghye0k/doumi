@@ -22,7 +22,8 @@
     "url": "https://github.com/janghye0k/doumi"
   },
   "keywords": [
-    "util"
+    "util",
+    "utilities"
   ],
   "author": "JangHyeok Kim",
   "license": "MIT",
@@ -44,6 +45,7 @@
     "core-js": "^3.35.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-jest": "^3.0.2",
     "eslint-plugin-eslint-plugin": "^5.2.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-prettier": "^5.1.2",
