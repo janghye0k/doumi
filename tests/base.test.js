@@ -24,7 +24,7 @@ import {
   isWeakSet,
 } from 'index';
 
-describe('BASE DOUMI TEST', () => {
+describe('BASE TEST', () => {
   it('typeOf', () => {
     const types = {
       Boolean: true,
