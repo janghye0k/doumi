@@ -1,4 +1,4 @@
-import typeOf from './typeOf';
+import tagType from './tagType';
 
 /**
  * Check value is number
@@ -10,6 +10,6 @@ import typeOf from './typeOf';
  * isNumber('123') // false
  */
 const isNumber = (value) =>
-  typeof value === 'number' || typeOf(value) === 'Number';
+  typeof value === 'number' || tagType(value) === 'Number';
 
 export default isNumber;

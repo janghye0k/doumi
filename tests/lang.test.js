@@ -1,5 +1,6 @@
 import {
-  typeOf,
+  tagType,
+  is,
   isArray,
   isArrayLike,
   isBlank,
@@ -9,23 +10,25 @@ import {
   isElement,
   isEmpty,
   isEqual,
+  isError,
   isFunction,
   isMap,
   isNull,
   isNullish,
   isNumber,
   isObject,
-  isObjectLike,
+  isPlainObject,
+  isRegExp,
   isSet,
   isString,
   isSymbol,
   isUndefined,
   isWeakMap,
   isWeakSet,
-} from 'index';
+} from 'lang';
 
-describe('BASE TEST', () => {
-  it('typeOf', () => {
+describe('CHECK TEST', () => {
+  it('tagType', () => {
     const types = {
       Boolean: true,
       String: '',
@@ -37,10 +40,15 @@ describe('BASE TEST', () => {
     };
 
     Object.entries(types).forEach(([type, value]) =>
-      expect(typeOf(value)).toBe(type)
+      expect(tagType(value)).toBe(type)
     );
   });
 
+  it('is', () => {
+    expect(is(String, 'str')).toBe(true);
+    expect(is(Boolean, true)).toBe(true);
+    expect(is(Boolean, 'true')).toBe(false);
+  });
   it('isArray', () => {
     const map = new Map([
       [true, [new Array(), [1, 2, 3]]],
@@ -122,6 +130,16 @@ describe('BASE TEST', () => {
     expect(isEqual(obj, obj)).toBe(true);
     expect(isEqual(obj, { ...obj })).toBe(true);
   });
+  it('isError', () => {
+    const map = new Map([
+      [true, [new Error()]],
+      [false, ['error']],
+    ]);
+
+    map.forEach((values, bol) => {
+      values.forEach((value) => expect(isError(value)).toBe(bol));
+    });
+  });
   it('isFunction', () => {
     const map = new Map([
       [true, [() => 0]],
@@ -174,22 +192,32 @@ describe('BASE TEST', () => {
   });
   it('isObject', () => {
     const map = new Map([
-      [true, [{}]],
-      [false, [new Map(), 1]],
+      [true, [{}, () => false, []]],
+      [false, [1]],
     ]);
 
     map.forEach((values, bol) => {
       values.forEach((value) => expect(isObject(value)).toBe(bol));
     });
   });
-  it('isObjectLike', () => {
+  it('isPlainObject', () => {
     const map = new Map([
-      [true, [{}, () => false, []]],
-      [false, [1]],
+      [true, [{}]],
+      [false, [new Map(), 1]],
     ]);
 
     map.forEach((values, bol) => {
-      values.forEach((value) => expect(isObjectLike(value)).toBe(bol));
+      values.forEach((value) => expect(isPlainObject(value)).toBe(bol));
+    });
+  });
+  it('isRegExp', () => {
+    const map = new Map([
+      [true, [/\d/gi, new RegExp()]],
+      [false, [new Map(), 1]],
+    ]);
+
+    map.forEach((values, bol) => {
+      values.forEach((value) => expect(isRegExp(value)).toBe(bol));
     });
   });
   it('isSet', () => {

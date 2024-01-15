@@ -1,5 +1,3 @@
-import isNullish from './isNullish';
-
 /**
  * Check value is date-like
  * @param {*} value The value to check
@@ -12,7 +10,7 @@ import isNullish from './isNullish';
  * isDateLike('string') // false
  */
 const isDateLike = (value) => {
-  if (isNullish(value)) return false;
+  if (!value) return false;
   return !isNaN(/** @type {any} */ (new Date(value)));
 };
 

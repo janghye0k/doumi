@@ -1,4 +1,4 @@
-import typeOf from '../base/typeOf';
+import tagType from '../lang/tagType';
 import findAll$ from './findAll$';
 import on from './on';
 
@@ -48,7 +48,7 @@ function bind$($element, eventType, selector, listener, condition) {
     (/** @type {import('./typedef').Evt<K, T>} */ event) => {
       if (!EvtClass) {
         if (eventType === 'wheel') EvtClass = WheelEvent;
-        else if (typeOf(event) === 'PointerEvent') EvtClass = PointerEvent;
+        else if (tagType(event) === 'PointerEvent') EvtClass = PointerEvent;
         else EvtClass = MouseEvent;
       }
       const $currentTarget = findCurrentTarget(event.target);

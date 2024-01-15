@@ -3,7 +3,7 @@
  * @param {*} value
  * @returns {string}
  */
-const typeOf = (value) =>
+const tagType = (value) =>
   Object.prototype.toString.call(value).slice(`[object `.length, -1);
 
-export default typeOf;
+export default tagType;

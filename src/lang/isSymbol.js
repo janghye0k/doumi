@@ -1,4 +1,4 @@
-import typeOf from './typeOf';
+import tagType from './tagType';
 
 /**
  * Check value is symbol
@@ -10,6 +10,6 @@ import typeOf from './typeOf';
  * isSymbol('a') // false
  */
 const isSymbol = (value) =>
-  typeof value === 'symbol' || typeOf(value) === 'Symbol';
+  typeof value === 'symbol' || tagType(value) === 'Symbol';
 
 export default isSymbol;

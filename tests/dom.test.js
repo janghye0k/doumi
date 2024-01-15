@@ -1,5 +1,5 @@
 import { find$, findAll$, on, off, bind$, create$ } from 'dom';
-import { isElement } from 'index';
+import { isElement } from 'lang';
 
 beforeEach(() => {
   document.body.innerHTML = `

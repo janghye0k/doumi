@@ -1,5 +1,5 @@
-import isObjectLike from './isObjectLike';
-import typeOf from './typeOf';
+import isObject from './isObject';
+import tagType from './tagType';
 
 /**
  * Check value is Set
@@ -10,6 +10,6 @@ import typeOf from './typeOf';
  * isSet(new Set()) // true
  * isSet([1, 2, 3]) // false
  */
-const isSet = (value) => isObjectLike(value) && typeOf(value) === 'Set';
+const isSet = (value) => isObject(value) && tagType(value) === 'Set';
 
 export default isSet;

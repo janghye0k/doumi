@@ -1,4 +1,4 @@
-import isElement from '../base/isElement';
+import isElement from '../lang/isElement';
 
 /**
  * Returns a static (not live) NodeList representing a list of the document's elements that match the specified group of selectors.

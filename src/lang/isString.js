@@ -1,4 +1,4 @@
-import typeOf from './typeOf';
+import tagType from './tagType';
 
 /**
  * Check value is string
@@ -10,6 +10,6 @@ import typeOf from './typeOf';
  * isString(0) // false
  */
 const isString = (value) =>
-  typeof value === 'string' || typeOf(value) === 'String';
+  typeof value === 'string' || tagType(value) === 'String';
 
 export default isString;

@@ -1,5 +1,5 @@
-import isObjectLike from './isObjectLike';
-import typeOf from './typeOf';
+import isObject from './isObject';
+import tagType from './tagType';
 
 /**
  * Check value is WeakSet
@@ -10,6 +10,6 @@ import typeOf from './typeOf';
  * isWeakSet(new WeakSet()) // true
  * isWeakSet(new Set()) // false
  */
-const isWeakSet = (value) => isObjectLike(value) && typeOf(value) === 'WeakSet';
+const isWeakSet = (value) => isObject(value) && tagType(value) === 'WeakSet';
 
 export default isWeakSet;

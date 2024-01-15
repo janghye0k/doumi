@@ -1,5 +1,5 @@
-import isObjectLike from './isObjectLike';
-import typeOf from './typeOf';
+import isObject from './isObject';
+import tagType from './tagType';
 
 /**
  * Check value is Map
@@ -10,6 +10,6 @@ import typeOf from './typeOf';
  * isMap(new Map()) // true
  * isMap({ a: 1, b: 2 }) // false
  */
-const isMap = (value) => isObjectLike(value) && typeOf(value) === 'Map';
+const isMap = (value) => isObject(value) && tagType(value) === 'Map';
 
 export default isMap;

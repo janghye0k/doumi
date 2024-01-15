@@ -1,5 +1,5 @@
-import isObjectLike from './isObjectLike';
-import typeOf from './typeOf';
+import isObject from './isObject';
+import tagType from './tagType';
 
 /**
  * Check value is WeakMap
@@ -10,6 +10,6 @@ import typeOf from './typeOf';
  * isWeakMap(new WeakMap()) // true
  * isWeakMap(new Map()) // false
  */
-const isWeakMap = (value) => isObjectLike(value) && typeOf(value) === 'WeakMap';
+const isWeakMap = (value) => isObject(value) && tagType(value) === 'WeakMap';
 
 export default isWeakMap;

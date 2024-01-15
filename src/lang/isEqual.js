@@ -1,8 +1,8 @@
 import isArrayLike from './isArrayLike';
 import isFunction from './isFunction';
+import isPlainObject from './isPlainObject';
 import isObject from './isObject';
-import isObjectLike from './isObjectLike';
-import typeOf from './typeOf';
+import tagType from './tagType';
 
 /**
  * Check values are equal
@@ -17,8 +17,8 @@ import typeOf from './typeOf';
  * isEqual(obj, {...obj}) // false
  */
 const isEqual = (value, compare) => {
-  const valueType = typeOf(value);
-  if (valueType !== typeOf(compare)) return false;
+  const valueType = tagType(value);
+  if (valueType !== tagType(compare)) return false;
 
   if (isArrayLike(value)) {
     if (value.length !== compare.length) return false;
@@ -28,9 +28,9 @@ const isEqual = (value, compare) => {
     return true;
   }
 
-  if (isObjectLike(value)) {
+  if (isObject(value)) {
     if (
-      isObject(value) &&
+      isPlainObject(value) &&
       Object.keys(value).length !== Object.keys(compare).length
     )
       return false;

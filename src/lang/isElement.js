@@ -1,4 +1,4 @@
-import isObjectLike from './isObjectLike';
+import isObject from './isObject';
 
 /**
  * Check value is element
@@ -9,6 +9,6 @@ import isObjectLike from './isObjectLike';
  * isElement(document.body) // true
  * isElement('<div></div>') // false
  */
-const isElement = (value) => isObjectLike(value) && value.nodeType === 1;
+const isElement = (value) => isObject(value) && value.nodeType === 1;
 
 export default isElement;

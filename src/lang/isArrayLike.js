@@ -1,5 +1,3 @@
-import isNullish from './isNullish';
-
 /**
  * Check value is array-like
  * @param {*} value The value to check
@@ -11,9 +9,8 @@ import isNullish from './isNullish';
  * isArrayLike(1) // false
  */
 const isArrayLike = (value) => {
-  if (isNullish(value)) return false;
-  if (typeof value === 'function') return false;
-  if (typeof value.length !== 'number') return false;
+  if (!value || typeof value === 'function' || typeof value.length !== 'number')
+    return false;
   return value.length > -1;
 };
 

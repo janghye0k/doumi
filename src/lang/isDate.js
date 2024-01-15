@@ -1,4 +1,4 @@
-import typeOf from './typeOf';
+import tagType from './tagType';
 
 /**
  * Check value is date
@@ -10,6 +10,6 @@ import typeOf from './typeOf';
  * isDate('2024-01-01') // false
  */
 const isDate = (value) =>
-  typeOf(value) === 'Date' && !isNaN(/** @type {any} */ (value));
+  tagType(value) === 'Date' && !isNaN(/** @type {any} */ (value));
 
 export default isDate;

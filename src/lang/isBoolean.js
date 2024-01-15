@@ -1,4 +1,4 @@
-import typeOf from './typeOf';
+import tagType from './tagType';
 
 /**
  * Check value is boolean
@@ -10,6 +10,6 @@ import typeOf from './typeOf';
  * isBoolean('true') // false
  */
 const isBoolean = (value) =>
-  typeof value === 'boolean' || typeOf(value) === 'Boolean';
+  typeof value === 'boolean' || tagType(value) === 'Boolean';
 
 export default isBoolean;

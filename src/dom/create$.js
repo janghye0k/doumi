@@ -1,4 +1,4 @@
-import typeOf from '../base/typeOf';
+import tagType from '../lang/tagType';
 
 /**
  * @template X
@@ -60,21 +60,21 @@ function create$(tagName, options = {}) {
   if (className) $el.classList.add(className);
   if (Array.isArray(classList)) $el.classList.add(...classList);
   if (role) $el.role = role;
-  if (style && typeOf(style) === 'Object') {
+  if (style && tagType(style) === 'Object') {
     for (const key in style) {
       const value = style[key];
       if (value === undefined) continue;
       $el.style[key] = value;
     }
   }
-  if (typeOf(dataset) === 'Object') {
+  if (tagType(dataset) === 'Object') {
     for (const key in dataset) {
       const value = dataset[key];
       if (value === undefined) continue;
       $el.dataset[key] = `${value}`;
     }
   }
-  if (typeOf(dataset) === 'Object') {
+  if (tagType(dataset) === 'Object') {
     for (const key in props) {
       const value = /** @type {any} */ (props)[key];
       if (value === undefined) continue;

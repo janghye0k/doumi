@@ -1,7 +1,7 @@
 import isArrayLike from './isArrayLike';
 import isMap from './isMap';
 import isNullish from './isNullish';
-import isObject from './isObject';
+import isObject from './isPlainObject';
 import isSet from './isSet';
 
 /**
