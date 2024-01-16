@@ -1,7 +1,8 @@
 /**
  * Check value is object-like
+ * @template {import('../typedef').Dictionary<any>} T
  * @param {unknown} value The value to check
- * @returns {boolean} Retruns `true` if `value` is object-like, else `false`
+ * @returns {value is T} Retruns `true` if `value` is object-like, else `false`
  * @example
  *
  * isObject({}) // true

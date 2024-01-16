@@ -1,12 +1,12 @@
 import tagType from './tagType';
 
 /**
- * @typedef {string | number | symbol} KeyLike
+ * @typedef {{ [P in (string | number | symbol)]?: any } & Object} PlainObject
  */
 
 /**
  * Check value is plain object
- * @template [T = { [P in KeyLike]?: any }]
+ * @template {object} [T = PlainObject]
  * @param {unknown} value The value to check
  * @returns {value is T} Retruns `true` if `value` is plain object, else `false`
  * @example

@@ -1,7 +1,8 @@
 /**
  * Check value is array-like
+ * @template {import('../typedef').ArrayLike<any>} T
  * @param {*} value The value to check
- * @returns {boolean} Retruns `true` if `value` is array-like, else `false`
+ * @returns {value is T} Retruns `true` if `value` is array-like, else `false`
  * @example
  *
  * isArrayLike([1, 2, 3]) // true
