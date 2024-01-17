@@ -41,7 +41,7 @@ import tagType from '../lang/tagType';
  * @property {string} [id]
  * @property {string} [className]
  * @property {string[]} [classList]
- * @property {import('./typedef').AriaRole} [role]
+ * @property {import('./index').AriaRole} [role]
  * @property {Partial<CSSStyleDeclaration>} [style]
  * @property {Record<string, string | boolean | number | undefined>} [dataset]
  */

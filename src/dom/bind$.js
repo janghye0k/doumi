@@ -24,7 +24,7 @@ import on from './on';
  * @param {Element} $element Parent element
  * @param {K} eventType Event type to listen for. It should be of the mouse event type
  * @param {string} selector A string containing one or more selectors to match.
- * @param {import('./typedef').EvtListener<K, T>} listener The object that receives a notification when an event of the specified type occurs.
+ * @param {import('./index').EvtListener<K, T>} listener The object that receives a notification when an event of the specified type occurs.
  * @param {BindCondition} [condition] Callback function that determine whether to fire an event listener
  */
 function bind$($element, eventType, selector, listener, condition) {
@@ -45,7 +45,7 @@ function bind$($element, eventType, selector, listener, condition) {
   on(
     /** @type {*} */ ($element),
     eventType,
-    (/** @type {import('./typedef').Evt<K, T>} */ event) => {
+    (/** @type {import('./index').Evt<K, T>} */ event) => {
       if (!EvtClass) {
         if (eventType === 'wheel') EvtClass = WheelEvent;
         else if (tagType(event) === 'PointerEvent') EvtClass = PointerEvent;

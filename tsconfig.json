@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "allowJs": true,
     "checkJs": true,
@@ -10,8 +11,9 @@
     "allowSyntheticDefaultImports": true,
     "outDir": "dist",
     "declaration": true,
-    "emitDeclarationOnly": false,
+    "emitDeclarationOnly": true,
+    "removeComments": false,
     "rootDir": "src"
   },
-  "include": ["./src/**/*.js"]
+  "include": ["./src/**/*.js", "./src/**/*.d.ts"]
 }

@@ -4,7 +4,7 @@
   "description": "Javascript Utilities",
   "main": "index.js",
   "scripts": {
-    "prebuild": "rimraf dist",
+    "clean": "rimraf dist",
     "build": "concurrently 'pnpm:build:*'",
     "build:base": "rollup -c",
     "lint:prettier": "prettier --list-different .",
