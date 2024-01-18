@@ -1,3 +1,10 @@
-export { default as each } from './each';
+export { default as every } from './every';
+export { default as filter } from './filter';
+export { default as find } from './find';
+export { default as forEach } from './forEach';
+export { default as forEachRight } from './forEachRight';
 export { default as groupBy } from './groupBy';
 export { default as map } from './map';
+export { default as reduce } from './reduce';
+export { default as reduceRight } from './reduceRight';
+export { default as some } from './some';

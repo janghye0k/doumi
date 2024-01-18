@@ -14,16 +14,23 @@ import { keys } from '../object';
  * @template T
  * @param {T} collection The collection to iterate over.
  * @param {(value: any, index: any, collection: T) => void} callback The function invoked per iteration.
+ * @example
+ *
+ * const arr = [1]
+ * forEach(arr, (value, index) => console.log(value, index)) // 1, 0
+ *
+ * const obj = { a: 1 }
+ * forEach(obj, (value, key) => console.log(value, key)) // 1, 'a'
  */
-function each<T extends ArrayLike<any>>(
+function forEach<T extends ArrayLike<any>>(
   collection: T,
   callback: (value: ArrayLikeValue<T>, index: number, collection: T) => void
 ): void;
-function each<T extends Dictionary<any>>(
+function forEach<T extends Dictionary<any>>(
   collection: T,
   callback: (value: DictionaryValue<T>, key: string, collection: T) => void
 ): void;
-function each<T extends Collection<any>>(
+function forEach<T extends Collection<any>>(
   collection: T,
   callback: (value: CollectionValue<T>, index: any, collection: T) => void
 ): void {
@@ -39,4 +46,4 @@ function each<T extends Collection<any>>(
   }
 }
 
-export default each;
+export default forEach;

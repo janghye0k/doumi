@@ -15,6 +15,18 @@ import { has, keys } from '../object';
  * @param {T} collection The collection to iterate over.
  * @param {(value: any, index: any, collection: T) => string} callback The function invoked per iteration.
  * @returns {Record<string, any[]>} Returns new grouped array
+ * @example
+ *
+ * const students = [
+ *   { name: 'john', class: 'A', score: 100 },
+ *   { name: 'alice', class: 'B', score: 91 },
+ *   { name: 'smith', class: 'C', score: 65 },
+ *   { name: 'gale', class: 'A', score: 74 },
+ * ]
+ *
+ * const results = groupBy(students, (value) => value.score < 70 ? 'fail' : 'pass')
+ * results.fail // [{ name: 'smith', class: 'C', score: 65 }]
+ * results.pass.length // 3
  */
 function groupBy<T extends ArrayLike<any>>(
   collection: T,

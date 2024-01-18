@@ -14,6 +14,13 @@ import { keys } from '../object';
  * @param {T} collection The collection to iterate over.
  * @param {(value: any, index: any, collection: O) => T} callback The function invoked per iteration.
  * @returns {T[]} Returns the new mapped array.
+ * @example
+ *
+ * const arr = [1, 2, 3]
+ * map(arr, (value, index) => value + index) // [1, 3, 5]
+ *
+ * const obj = { a: 1, b: 2, c: 3 }
+ * map(obj, (value, key) => value + key) // ['a1', 'b2', 'c3']
  */
 function map<T = any, O extends ArrayLike<any> = ArrayLike<any>>(
   collection: O,
