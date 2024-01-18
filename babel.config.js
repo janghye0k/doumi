@@ -8,11 +8,10 @@ module.exports = (api, targets) => {
       [
         '@babel/preset-env',
         {
-          loose: true,
-          modules: isTestEnv ? 'commonjs' : false,
           targets: isTestEnv ? { node: 'current' } : targets,
         },
       ],
+      '@babel/preset-typescript',
     ],
   };
 };

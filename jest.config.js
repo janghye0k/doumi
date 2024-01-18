@@ -4,9 +4,10 @@
 const config = {
   verbose: true,
   testEnvironment: 'jsdom',
-  moduleDirectories: ['src', 'node_modules'],
   coverageDirectory: 'coverage',
   setupFilesAfterEnv: ['<rootDir>/tests/setupTests.js'],
+  moduleDirectories: ['src', 'node_modules'],
+  moduleFileExtensions: ['js', 'ts', 'json'],
 };
 
 module.exports = config;

@@ -100,14 +100,14 @@ describe('OBJECT TEST', () => {
   it('entries', () => {
     const results = entries(new Foo());
     expect(results).toHaveLength(2);
-    expect(typeof results[0][0]).toBe('string');
-    expect(typeof results[0][1]).toBe('number');
+    expect(typeof results[0][0]).toBe('number');
+    expect(typeof results[0][1]).toBe('string');
   });
   it('entriesIn', () => {
     const results = entriesIn(new Foo());
     expect(results).toHaveLength(3);
-    expect(typeof results[0][0]).toBe('string');
-    expect(typeof results[0][1]).toBe('number');
+    expect(typeof results[0][0]).toBe('number');
+    expect(typeof results[0][1]).toBe('string');
   });
 
   it('omit', () => {

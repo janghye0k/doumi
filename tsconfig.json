@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "ESNext",
+    "module": "ES6",
     "moduleResolution": "node",
     "allowJs": true,
-    "checkJs": true,
     "strict": true,
     "useUnknownInCatchVariables": false,
     "types": ["node"],
+    "lib": ["ESNext", "DOM"],
     "allowSyntheticDefaultImports": true,
     "outDir": "dist",
     "declaration": true,
@@ -15,5 +15,5 @@
     "removeComments": false,
     "rootDir": "src"
   },
-  "include": ["./src/**/*.js", "./src/**/*.d.ts"]
+  "include": ["./src/**/*.ts", "./src/**/*.js"]
 }

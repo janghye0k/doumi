@@ -2,6 +2,7 @@ const path = require('path');
 const babelPlugin = require('@rollup/plugin-babel');
 const terser = require('@rollup/plugin-terser');
 const { dts } = require('rollup-plugin-dts');
+const resolve = require('@rollup/plugin-node-resolve');
 const { default: esbuild } = require('rollup-plugin-esbuild');
 const createBabelConfig = require('./babel.config.js');
 const pkg = require('./package.json');
@@ -18,7 +19,7 @@ function getBabelOptions(targets) {
   return {
     ...createBabelConfig({ env: (env) => env === 'build' }, targets),
     extensions,
-    comments: true,
+    comments: false,
     babelHelpers: 'bundled',
   };
 }
@@ -45,7 +46,7 @@ function createESMConfig(input, output) {
   return {
     input,
     output: { file: output, format: 'esm', banner },
-    plugins: [getEsbuild('node12')],
+    plugins: [resolve({ extensions }), getEsbuild('node12')],
   };
 }
 
@@ -58,47 +59,51 @@ function createCommonJSConfig(input, output) {
       esModule: false,
       banner,
     },
-    plugins: [babelPlugin(getBabelOptions({ ie: 11 }))],
+    plugins: [
+      resolve({ extensions }),
+      babelPlugin(getBabelOptions({ ie: 11 })),
+    ],
   };
 }
 
+/**
+ *
+ * @param {string} input
+ * @param {string} output
+ * @param {'development' | 'production'} env
+ */
 function createUMDConfig(input, output, env) {
-  let name = pkg.name;
-  const fileName = output.slice('dist/umd/'.length);
   const capitalize = (s) => s.slice(0, 1).toUpperCase() + s.slice(1);
-  if (fileName !== 'index') {
-    name += fileName.replace(/(\w+)\W*/g, (_, p) => capitalize(p));
+  let name = capitalize(pkg.name);
+  const splited = output.slice('dist/'.length).split('/');
+  for (let i = splited.length - 1; i >= 0; i -= 1) {
+    if (!['index', pkg.name].includes(splited[i])) {
+      name += capitalize(splited[i]);
+      break;
+    }
   }
   return {
     input,
     output: {
-      file: `${output}.${env}.js`,
+      file: `${output}.${env === 'production' ? 'min' : ''}.js`,
       format: 'umd',
       name,
       banner,
     },
     plugins: [
-      babelPlugin(getBabelOptions({ ie: 11 })),
+      resolve({ extensions }),
+      babelPlugin({ ...getBabelOptions({ ie: 11 }), comments: true }),
       ...(env === 'production' ? [terser()] : []),
     ],
   };
 }
 
-module.exports = function (args) {
-  let target = Object.keys(args).find((key) => key.startsWith('config-'));
-  if (target) {
-    target = target.slice('config-'.length).replace(/_/g, '/');
-  } else {
-    target = 'index';
-  }
-  return [
-    createDeclarationConfig(`src/${target}.js`, 'dist'),
-    createDeclarationConfig(`src/${target}.js`, 'dist/esm'),
-    createCommonJSConfig(`src/${target}.js`, `dist/${target}`),
-    createESMConfig(`src/${target}.js`, `dist/esm/${target}.js`),
-    createUMDConfig(`src/${target}.js`, `dist/umd/${target}`, 'development'),
-    createUMDConfig(`src/${target}.js`, `dist/umd/${target}`, 'production'),
-  ];
-};
+const entry = 'src/index.ts';
 
-module.exports.entries = [];
+module.exports = [
+  createDeclarationConfig(entry, 'dist/'),
+  createCommonJSConfig(entry, 'dist/index'),
+  createESMConfig(entry, 'dist/index.esm.js'),
+  createUMDConfig(entry, `dist/${pkg.name}`, 'development'),
+  createUMDConfig(entry, `dist/${pkg.name}`, 'production'),
+];

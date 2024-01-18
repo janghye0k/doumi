@@ -51,7 +51,7 @@ describe('CHECK TEST', () => {
   });
   it('isArray', () => {
     const map = new Map([
-      [true, [new Array(), [1, 2, 3]]],
+      [true, [[], [1, 2, 3]]],
       [false, [1]],
     ]);
 
