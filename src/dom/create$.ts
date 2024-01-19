@@ -24,8 +24,8 @@ type FunctionKeys<T> = {
 
 type OmitFunction<T> = { [P in Exclude<keyof T, FunctionKeys<T>>]: T[P] };
 
-type CreateOptions<T> = CreateCustomOptions &
-  Partial<Writable<OmitFunction<T>>>;
+type CreateOptions<T> = Partial<Writable<OmitFunction<T>>> &
+  CreateCustomOptions;
 
 type CreateCustomOptions = {
   id?: string | undefined;
@@ -37,10 +37,11 @@ type CreateCustomOptions = {
 };
 
 /**
+ * Create Element
  * @template {keyof HTMLElementTagNameMap} K
  * @template [T = HTMLElementTagNameMap[K]]
- * @param {K} tagName
- * @param {CreateOptions<T>} options
+ * @param {K} tagName The tag name of element
+ * @param {CreateOptions<T>} options The element options
  */
 function create$<
   K extends keyof HTMLElementTagNameMap,
