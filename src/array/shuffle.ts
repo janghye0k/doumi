@@ -5,17 +5,7 @@
  * @returns {T[]} Returns the new shuffled array.
  */
 const shuffle = <T>(array: T[]): T[] => {
-  const size = array.length;
-
-  let pointer;
-  const results = Array.from(array);
-  for (let i = size - 1; i >= 0; i--) {
-    const random = Math.round(Math.random() * (size - i - 1));
-    pointer = results[i];
-    results[i] = results[random];
-    results[random] = pointer;
-  }
-  return results;
+  return array.sort(() => 0.5 - Math.random());
 };
 
 export default shuffle;
