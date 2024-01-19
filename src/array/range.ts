@@ -3,6 +3,10 @@
  * @param size The size of array
  * @param start The start index of array, if `arguments.length === 0`, array started at 0 index
  * @returns {number[]} Returns `size` length array, started at `start`
+ * @example
+ *
+ * range(5) // [0, 1, 2, 3, 4]
+ * range(3, 4) // [3, 4, 5, 6]
  */
 function range(size: number): number[];
 function range(start: number, size: number): number[];
