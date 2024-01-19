@@ -2,7 +2,35 @@
   "name": "doumi",
   "version": "0.1.0",
   "description": "Javascript Utilities",
-  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/janghye0k/doumi"
+  },
+  "keywords": [
+    "util",
+    "utilities"
+  ],
+  "author": "JangHyeok Kim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/janghye0k/doumi/issues"
+  },
+  "homepage": "https://github.com/janghye0k/doumi#readme",
+  "files": [
+    "dist",
+    "package.json",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "main": "./dist/doumi.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.esm.js",
+      "browser": "./dist/doumi.js"
+    }
+  },
   "scripts": {
     "clean": "rimraf dist",
     "prebuild": "pnpm clean",
@@ -18,20 +46,6 @@
     "prepare": "husky install",
     "release": "standard-version"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/janghye0k/doumi"
-  },
-  "keywords": [
-    "util",
-    "utilities"
-  ],
-  "author": "JangHyeok Kim",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/janghye0k/doumi/issues"
-  },
-  "homepage": "https://github.com/janghye0k/doumi#readme",
   "devDependencies": {
     "@babel/cli": "^7.23.4",
     "@babel/core": "^7.23.7",

@@ -1,8 +1,11 @@
-export * from './lang';
-export * from './dom';
-export * from './object';
-export * from './collection';
 export * from './array';
+export * from './collection';
+export * from './dom';
+export * from './function';
+export * from './lang';
+export * from './math';
+export * from './object';
+export * from './string';
 
 export type {
   ArrayLike,
