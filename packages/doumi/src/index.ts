@@ -31,8 +31,5 @@ type DictionaryValue<T> = T extends Dictionary<infer U> ? U : never;
 
 type Collection<T> = ArrayLike<T> | Dictionary<T>;
 
-type CollectionValue<T> = T extends ArrayLike<infer U>
-  ? U
-  : T extends Dictionary<infer U>
-    ? U
-    : never;
+type CollectionValue<T> =
+  T extends ArrayLike<infer U> ? U : T extends Dictionary<infer U> ? U : never;

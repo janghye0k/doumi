@@ -13,7 +13,7 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "removeComments": false,
-    "rootDir": "src"
+    "rootDir": "src",
   },
-  "include": ["./src/**/*.ts", "./src/**/*.js"]
+  "include": ["./src/**/*.ts", "./src/**/*.js"],
 }

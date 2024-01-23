@@ -1,3 +1,11 @@
+<div align="center">
+  <img src="https://github.com/janghye0k/doumi/blob/main/packages/doumi/logo.png"></img>
+</div>
+
+[![NPM Version](https://img.shields.io/npm/v/doumi.svg?style=flat)]()
+[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/janghye0k/doumi/blob/main/packages/doumi/LICENSE)
+[![Test Status](https://img.shields.io/github/actions/workflow/status/janghye0k/doumi/test.yml?branch=main&style=flat&label=test)](https://github.com/janghye0k/doumi/actions?query=workflow%Test)
+
 # doumi
 
 The Doumi is a utility library for JavaScript that provides support for the usual functional suspects (forEach, on, debounce, isEqual...)
