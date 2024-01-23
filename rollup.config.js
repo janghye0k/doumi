@@ -74,7 +74,7 @@ function createCommonJSConfig(input, output) {
  */
 function createUMDConfig(input, output, env) {
   const capitalize = (s) => s.slice(0, 1).toUpperCase() + s.slice(1);
-  let name = capitalize(pkg.name);
+  let name = pkg.name;
   const splited = output.slice('dist/'.length).split('/');
   for (let i = splited.length - 1; i >= 0; i -= 1) {
     if (!['index', pkg.name].includes(splited[i])) {
@@ -85,7 +85,7 @@ function createUMDConfig(input, output, env) {
   return {
     input,
     output: {
-      file: `${output}.${env === 'production' ? 'min' : ''}.js`,
+      file: `${output}${env === 'production' ? '.min' : ''}.js`,
       format: 'umd',
       name,
       banner,
