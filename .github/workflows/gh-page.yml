@@ -1,22 +1,29 @@
-name: Test
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ['main']
+    branches:
+      - main
     paths:
-      - packages/doumi/**
-  pull_request:
-    branches: ['main']
-    paths:
-      - packages/doumi/**
+      - packages/website/**
+
+permissions:
+  contents: read
+  pages: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
-  test:
+  deploy:
+    name: Deploy to GitHub Pages
+
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     steps:
       - name: Checkout repository
@@ -36,5 +43,11 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
-      - name: Run tests
-        run: pnpm lib test
+      - name: Build website
+        run: pnpm doc build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: ./packages/website/build
