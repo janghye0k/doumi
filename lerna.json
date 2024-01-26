@@ -13,7 +13,8 @@
         "**/tsconfig.json",
         "**/jest.config.js",
         "**/rollup.config.js",
-        "**/babel.config.js"
+        "**/babel.config.js",
+        "**/README.md"
       ]
     }
   }

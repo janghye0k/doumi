@@ -1,0 +1,47 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex-grow: 1;
+}
+
+.consoleControl {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  flex-grow: 0;
+  border: 1px solid var(--ifm-toc-border-color);
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.consoleControl svg {
+  stroke: #aaa;
+}
+
+html[data-theme='dark'] .consoleControl > svg {
+  stroke: #555;
+}
+
+.consoleControl > button {
+  all: unset;
+  cursor: pointer;
+}
+
+.consoleControl > button:hover {
+  text-decoration: underline;
+}
+
+.consoleHead {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  gap: 0.25rem;
+  margin-right: auto;
+}
+
+.consoleBlock {
+  flex: 1;
+  overflow: auto;
+}

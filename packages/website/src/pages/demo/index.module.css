@@ -1,0 +1,54 @@
+.bordered {
+  border-color: var(--ifm-toc-border-color);
+  border-style: solid;
+  border-width: 0;
+}
+
+.horizontalResize {
+  display: flex;
+  overflow: hidden;
+  flex-grow: 1;
+  max-height: calc(100vh - var(--ifm-navbar-height) - var(--footer-height));
+  min-height: 500px;
+}
+
+.verticalResize {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.verticalResize > * {
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.codeContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Customize docusauraus tab */
+.editorContainer > * {
+  flex-grow: 1;
+  margin-bottom: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.editorContainer > * > [role='tablist'] + * {
+  flex-grow: 1;
+  margin-top: 0 !important;
+}
+
+.editorContainer > * > [role='tablist'] + * > [role='tabpanel'] {
+  padding-top: 0.25rem;
+  height: 100%;
+}
