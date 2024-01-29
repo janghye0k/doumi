@@ -1,0 +1,46 @@
+---
+sidebar_position: 1
+---
+
+# Getting Started
+
+## Installation
+
+```bash npm2yarn
+npm install doumi
+```
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="es modules" label="ES Modules" default>
+
+```js
+import { isObject } from 'doumi';
+
+isObject({}); // true
+```
+
+</TabItem>
+
+<TabItem value="commonjs" label="CommonJS">
+
+```js
+const { isObject } = require('doumi');
+
+isObject({}); // true
+```
+
+</TabItem>
+</Tabs>
+
+### Without package manager
+
+First, download released
+
+If you don't want ot use package manager, you can add Javascript at the end of `<body>`
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/doumi/dist/doumi.js"></script>
+```

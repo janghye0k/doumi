@@ -51,14 +51,14 @@ function DemoPage({ libSource }) {
         <!doctype html>
         <html lang="en">
           <head>
-            <script src="/lib/html-console-output.js"></script>
-            <script src="/lib/doumi/doumi.js"></script>
             <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
             <style>${style}</style>
+            <script defer src="/lib/html-console-output.js"></script>
+            <script defer src="https://cdn.jsdelivr.net/npm/doumi/dist/doumi.js"></script>
+            <script defer type="text/javascript">${script}</script>
           </head>
           <body>
             ${html}
-            <script type="text/javascript">${script}</script>
           </body>
         </html>
       `;
@@ -192,7 +192,9 @@ export default function Demo() {
   const [libSource, setLibSource] = useState('');
 
   useEffect(() => {
-    fetch(`${siteConfig.baseUrl}/lib/doumi/index.d.ts`.replace('//', '/'))
+    fetch(
+      `https://cdn.jsdelivr.net/npm/doumi/dist/index.d.ts`.replace('//', '/')
+    )
       .then((res) => res.text())
       .then((text) => {
         const declaration = `declare namespace doumi {\n${text
