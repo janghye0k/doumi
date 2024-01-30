@@ -43,6 +43,9 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
+      - name: Build library
+        run: pnpm lib build
+
       - name: Build website
         run: pnpm doc build
 
