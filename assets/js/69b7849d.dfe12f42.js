@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocument=self.webpackChunkdocument||[]).push([[585],{8667:e=>{e.exports=JSON.parse('{"title":"Methods","slug":"/category/methods","permalink":"/doumi/docs/category/methods","navigation":{"previous":{"title":"Getting Started","permalink":"/doumi/docs/getting-started"},"next":{"title":"Array","permalink":"/doumi/docs/methos/array"}}}')}}]);
