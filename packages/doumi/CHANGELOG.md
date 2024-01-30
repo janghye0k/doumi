@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/janghye0k/doumi/compare/v0.1.0...v1.0.0) (2024-01-30)
+
+### Bug Fixes
+
+- create$ not assign options.props values ([067bf9b](https://github.com/janghye0k/doumi/commit/067bf9bbe307d534e83c640c81806bd4ea7825e1))
+
+### Features
+
+- add jsdocs comments (since, example) ([a5f9002](https://github.com/janghye0k/doumi/commit/a5f9002d52b1ce3e9dbea71b3549f58500313fa9))
+
 # 0.1.0 (2024-01-24)
 
 ### Features

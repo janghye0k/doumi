@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/janghye0k/doumi/compare/v0.1.0...v1.0.0) (2024-01-30)
+
+### Bug Fixes
+
+- create$ not assign options.props values ([067bf9b](https://github.com/janghye0k/doumi/commit/067bf9bbe307d534e83c640c81806bd4ea7825e1))
+- demo page build error & temporary disable locale 'ko' ([a1a288a](https://github.com/janghye0k/doumi/commit/a1a288ad134a327fc327a93b7462a4345e9c179a))
+- lib types cdn url ([181682a](https://github.com/janghye0k/doumi/commit/181682a05f43432be9981b5c2ddc5173a610bbc2))
+- test workflow ([a240f3e](https://github.com/janghye0k/doumi/commit/a240f3e5daace2829f08e0e2790ed2ff836b0616))
+- test workflow paths ([5242d71](https://github.com/janghye0k/doumi/commit/5242d714c41adbf1f36970c684cac1931d1a73ac))
+
+### Features
+
+- add jsdocs comments (since, example) ([a5f9002](https://github.com/janghye0k/doumi/commit/a5f9002d52b1ce3e9dbea71b3549f58500313fa9))
+- change github url ([3f59db9](https://github.com/janghye0k/doumi/commit/3f59db90a3d9617a8c1240c7258bf14f4f9b4ba2))
+- change sidebar & get doumi files from cdn ([790afd1](https://github.com/janghye0k/doumi/commit/790afd1c8a8f6919a9043cca45a9a8f52db6230a))
+- Doumi demo page ([bb1aec7](https://github.com/janghye0k/doumi/commit/bb1aec751e699ae036fc537fb2208690e320b676))
+- landing page & docs auto create settings ([5cc8b23](https://github.com/janghye0k/doumi/commit/5cc8b238c1372349ecb3ff2528255b163adfd59f))
+
 # 0.1.0 (2024-01-24)
 
 ### Features
