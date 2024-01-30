@@ -10,13 +10,33 @@ import styles from './index.module.css';
 import { Resizable } from 're-resizable';
 import clsx from 'clsx';
 import Editor, { useMonaco } from '@monaco-editor/react';
-import files from './files';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { useColorMode } from '@docusaurus/theme-common';
 import { debounce } from 'doumi';
 import Console from '@site/src/components/Console';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
+const files = {
+  script: {
+    label: 'Script',
+    name: 'script.js',
+    language: 'javascript',
+    value: `const $btn = doumi.create$('button', { className: 'welcomeBtn', innerHTML: 'welcome' })\ndoumi.on($btn, 'click', (event) => console.log('welcome'))\ndocument.body.appendChild($btn)\n\nconsole.log('isNumber', doumi.isNumber(1), doumi.isNumber('1'))\n\nconst data = { a: '0' }\ndoumi.set(data, 'b.[1]', 'set data')\nconsole.log(data)\n`,
+  },
+  style: {
+    label: 'Style',
+    name: 'style.css',
+    language: 'css',
+    value: `body {\n\tpadding: 1rem;\n}\n\n.head {\n\tfont-size: 1.25rem;\n\tmargin-bottom: 1rem;\n}\n`,
+  },
+  html: {
+    label: 'HTML',
+    name: 'index.html',
+    language: 'html',
+    value: `<div class="head">Doumi demo</div>\n`,
+  },
+};
 
 function DemoPage({ libSource }) {
   const monaco = useMonaco();

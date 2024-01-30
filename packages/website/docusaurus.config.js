@@ -34,14 +34,15 @@ const config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'ko'],
+    locales: ['en'],
+    // locales: ['en', 'ko'],
     localeConfigs: {
       en: {
         htmlLang: 'en',
       },
-      ko: {
-        htmlLang: 'ko',
-      },
+      // ko: {
+      //   htmlLang: 'ko',
+      // },
     },
   },
 
@@ -127,10 +128,10 @@ const config = {
             label: 'Documentation',
           },
           { to: '/demo', label: 'Demo', position: 'left' },
-          {
-            type: 'localeDropdown',
-            position: 'right',
-          },
+          // {
+          //   type: 'localeDropdown',
+          //   position: 'right',
+          // },
           {
             href: 'https://github.com/janghye0k/doumi',
             position: 'right',
