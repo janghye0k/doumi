@@ -212,9 +212,7 @@ export default function Demo() {
   const [libSource, setLibSource] = useState('');
 
   useEffect(() => {
-    fetch(
-      `https://cdn.jsdelivr.net/npm/doumi/dist/index.d.ts`.replace('//', '/')
-    )
+    fetch(`https://cdn.jsdelivr.net/npm/doumi/dist/index.d.ts`)
       .then((res) => res.text())
       .then((text) => {
         const declaration = `declare namespace doumi {\n${text
