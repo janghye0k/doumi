@@ -132,7 +132,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://github.com/janghye0k/doumi/tree/main/packages/doumi',
+            href: 'https://github.com/janghye0k/doumi',
             position: 'right',
             className: 'header-github-link',
             'aria-label': 'GitHub repository',
