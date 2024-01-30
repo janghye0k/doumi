@@ -4,15 +4,15 @@ on:
   push:
     branches: ['main']
     paths:
-      - 'packages/doumi/src'
-      - 'packages/doumi/tests'
+      - 'packages/doumi/src/**'
+      - 'packages/doumi/tests/**'
       - 'packages/doumi/jest.config.js'
     paths-ignore:
   pull_request:
     branches: ['main']
     paths:
-      - 'packages/doumi/src'
-      - 'packages/doumi/tests'
+      - 'packages/doumi/src/**'
+      - 'packages/doumi/tests/**'
       - 'packages/doumi/jest.config.js'
 
 jobs:
