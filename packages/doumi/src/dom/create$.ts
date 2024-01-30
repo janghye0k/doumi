@@ -39,6 +39,9 @@ type CreateCustomOptions = {
  * @template [T = HTMLElementTagNameMap[K]]
  * @param {K} tagName The tag name of element
  * @param {CreateOptions<T>} options The element options
+ * @example
+ *
+ * const $div = create$('div', { className: 'my-class', innerHTML: 'welcome' })
  */
 function create$<
   K extends keyof HTMLElementTagNameMap,
@@ -64,7 +67,7 @@ function create$<
       $el.dataset[key] = `${value}`;
     }
   }
-  if (tagType(dataset) === 'Object') {
+  if (tagType(props) === 'Object') {
     for (const key in props) {
       const value = (props as any)[key];
       if (value === undefined) continue;
