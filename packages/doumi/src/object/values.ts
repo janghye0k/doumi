@@ -2,6 +2,7 @@ import type { Dictionary } from '../index';
 
 /**
  * Create an array of a given object's own enumerable string-keyed property values.
+ * @since 0.1.0
  * @template {object} T
  * @template [V = any]
  * @param {T} object The object to extract values

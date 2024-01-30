@@ -1,5 +1,6 @@
 /**
  * Converts string to camel case. https://developer.mozilla.org/en-US/docs/Glossary/Camel_case
+ * @since 0.1.0
  * @param {string} str The string to convert.
  * @returns {string} Returns the camel cased string.
  * @example

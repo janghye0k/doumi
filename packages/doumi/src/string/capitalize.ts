@@ -1,5 +1,6 @@
 /**
  * Converts the first character of string to upper case and the remaining to lower case
+ * @since 0.1.0
  * @param {string} str The string to capitalize
  * @returns {string} Retruns the capitalized string
  * @example

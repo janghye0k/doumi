@@ -2,6 +2,7 @@ import isObject from './isObject';
 
 /**
  * Check value is element
+ * @since 0.1.0
  * @param {*} value The value to check
  * @returns {value is Element} Retruns `true` if `value` is element, else `false`
  * @example

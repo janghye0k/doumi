@@ -2,6 +2,7 @@ import tagType from './tagType';
 
 /**
  * Check value is RegExp
+ * @since 0.1.0
  * @param {*} value The value to check
  * @returns {value is RegExp} Retruns `true` if `value` is RegExp, else `false`
  * @example

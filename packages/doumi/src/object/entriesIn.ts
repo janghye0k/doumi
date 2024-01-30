@@ -3,6 +3,7 @@ import keysIn from './keysIn';
 
 /**
  * Create an array of a given object's own and inherited enumerable string-keyed property key-value pairs.
+ * @since 0.1.0
  * @template [V = any]
  * @template {string} [K = string]
  * @param {object | Dictionary<V> | ArrayLike<V>} object The object to extract entries

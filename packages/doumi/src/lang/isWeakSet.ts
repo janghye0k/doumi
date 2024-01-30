@@ -3,6 +3,7 @@ import tagType from './tagType';
 
 /**
  * Check value is WeakSet
+ * @since 0.1.0
  * @param {*} value The value to check
  * @returns {boolean} Retruns `true` if `value` is WeakSet, else `false`
  * @example

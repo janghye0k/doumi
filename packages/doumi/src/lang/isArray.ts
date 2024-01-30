@@ -1,5 +1,6 @@
 /**
  * Check value is array
+ * @since 0.1.0
  * @param {*} value The value to check
  * @returns {value is any[]} Retruns `true` if `value` is array, else `false`
  * @example

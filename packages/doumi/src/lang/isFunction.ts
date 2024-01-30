@@ -1,5 +1,6 @@
 /**
  * Check value is function
+ * @since 0.1.0
  * @param {*} value The value to check
  * @returns {value is Function} Retruns `true` if `value` is function, else `false`
  * @example

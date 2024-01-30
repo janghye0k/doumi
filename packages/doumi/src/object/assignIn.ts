@@ -2,6 +2,8 @@ import { isObject } from '../lang';
 import keysIn from './keysIn';
 
 /**
+ * This method is like assign except that it iterates over own and inherited source properties.
+ * @since 0.1.0
  * @param {object} object The object to merged
  * @param {...any} sources The source objects
  * @returns {any} Returns object

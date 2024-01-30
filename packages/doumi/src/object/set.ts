@@ -5,6 +5,7 @@ const numRegex = /\d/g;
 
 /**
  * Sets the value at path of object.
+ * @since 0.1.0
  * @param {object} object The object to modify.
  * @param {string} paths The path of the property to set.
  * @param {*} value The value to set

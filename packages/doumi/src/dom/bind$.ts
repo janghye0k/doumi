@@ -21,6 +21,7 @@ type MouseEventKeys<T = HTMLElementEventMap> = {
 
 /**
  * Function to pre-register events for elements whose existence is uncertain by registering events on the parent element.
+ * @since 0.1.0
  * @template {MouseEventKeys} K
  * @template {Element} [T = HTMLElement]
  * @param {Element} $element Parent element
@@ -28,6 +29,9 @@ type MouseEventKeys<T = HTMLElementEventMap> = {
  * @param {string} selector A string containing one or more selectors to match.
  * @param {import('./index').EvtListener<K, T>} listener The object that receives a notification when an event of the specified type occurs.
  * @param {BindCondition} [condition] Callback function that determine whether to fire an event listener
+ * @example
+ *
+ * bind$(document.body, 'click', '.some-selector', (event) => console.log(event))
  */
 function bind$<K extends MouseEventKeys, T extends Element = HTMLElement>(
   $element: Element,

@@ -1,5 +1,6 @@
 /**
  * Convert string to kebab case. https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case
+ * @since 0.1.0
  * @param {string} str The string to convert.
  * @returns {string} Returns the kebab cased string.
  * @example

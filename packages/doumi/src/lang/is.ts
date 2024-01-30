@@ -3,6 +3,7 @@ import tagType from './tagType';
 type ConstructorObject = { name: string };
 
 /**
+ * @since 0.1.0
  * @param {*} object The object (constructor) to used for comparison
  * @param {*} value The value to compare
  * @returns {boolean} Retruns `true` if the `value` is `object`, else `false`

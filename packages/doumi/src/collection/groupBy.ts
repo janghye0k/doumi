@@ -11,6 +11,7 @@ import { has, keys } from '../object';
 
 /**
  * Iterates over elements of collection and invokes iteratee for each element.
+ * @since 0.1.0
  * @template T
  * @param {T} collection The collection to iterate over.
  * @param {(value: any, index: any, collection: T) => string} callback The function invoked per iteration.

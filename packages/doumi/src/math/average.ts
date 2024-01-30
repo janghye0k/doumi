@@ -2,6 +2,7 @@ import sum from './sum';
 
 /**
  * Computes the average of the values
+ * @since 0.1.0
  * @param {number[]} values
  * @returns {number}
  * @example

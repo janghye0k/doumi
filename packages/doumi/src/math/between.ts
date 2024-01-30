@@ -1,5 +1,6 @@
 /**
  * Checks if n is between start and up to end
+ * @since 0.1.0
  * @param {number} number The number to check.
  * @param {number} start The start of the range.
  * @param {number} end The end of the range.

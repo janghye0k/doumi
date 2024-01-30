@@ -1,5 +1,6 @@
 /**
  * Create object omitted by given keys
+ * @since 0.1.0
  * @template {object} T
  * @template {keyof T} K
  * @param {T} object

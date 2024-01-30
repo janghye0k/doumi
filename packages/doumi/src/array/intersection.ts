@@ -3,6 +3,7 @@ import { isFunction } from '../lang';
 
 /**
  * Creates an array of values that are included in all given arrays. The order and references of result values are determined by the first array.
+ * @since 0.1.0
  * @template T
  * @param {T[]} array The array to inspect.
  * @param {T[][] | [...T[][], (value: T, index: number) => any]} other The values to exclude.

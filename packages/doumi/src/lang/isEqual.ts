@@ -6,6 +6,7 @@ import tagType from './tagType';
 
 /**
  * Check values are equal
+ * @since 0.1.0
  * @param {*} value
  * @param {*} compare
  * @returns {boolean} Retruns `true` if the values are equal, else `false`

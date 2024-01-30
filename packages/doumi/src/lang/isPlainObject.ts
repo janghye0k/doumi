@@ -3,6 +3,7 @@ import type { Dictionary } from '../index';
 
 /**
  * Check value is plain object
+ * @since 0.1.0
  * @param {*} value The value to check
  * @returns {boolean} Retruns `true` if `value` is plain object, else `false`
  * @example

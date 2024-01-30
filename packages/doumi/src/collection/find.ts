@@ -11,6 +11,7 @@ import { keys } from '../object';
 
 /**
  * Iterates over elements of collection, returning the first element predicate returns truthy for.
+ * @since 0.1.0
  * @template T
  * @param {T} collection The collection to iterate over.
  * @param {(value: any, index: any, collection: T) => boolean} predicate The function invoked per iteration.

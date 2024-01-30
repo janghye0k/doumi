@@ -1,5 +1,6 @@
 /**
  * Clamp number
+ * @since 0.1.0
  * @param {number} number The number to clamp
  * @param {number} lower The lower bound
  * @param {number} upper The upper bound

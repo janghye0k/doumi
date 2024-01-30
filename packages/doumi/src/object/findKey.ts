@@ -2,6 +2,7 @@ import keys from './keys';
 
 /**
  * Returns the key of the first element predicate
+ * @since 0.1.0
  * @template {object} T
  * @param {T} object The object to inspect.
  * @param {(value: any) => boolean} predicate The function invoked per iteration.

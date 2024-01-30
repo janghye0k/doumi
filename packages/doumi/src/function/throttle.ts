@@ -10,15 +10,23 @@ type Throttled<T extends (...args: T[]) => any> = {
 const now = () => new Date().getTime();
 
 /**
- *Creates a throttled function that only invokes func at most once per every wait milliseconds. 
- 
- The throttled function comes with a cancel method to cancel delayed func invocations and a flush method to immediately invoke them.
+ *Creates a throttled function that only invokes func at most once per every wait milliseconds.
+ *
+ * The throttled function comes with a cancel method to cancel delayed func invocations and a flush method to immediately invoke them.
+ * @since 0.1.0
  * @param {Function} func The function to throttle.
  * @param {number} wait The number of milliseconds to delay
  * @param {ThrottleOptions} [options] The options object.
  * @param {boolean} [options.leading] Specify invoking on the leading edge of the timeout.
  * @param {boolean} [options.trailing] Specify invoking on the trailing edge of the timeout.
  * @returns {Function} Returns throttled function. You can cancel throttle using `throttled.cancel`
+ * @example
+ *
+ * const throttled = throttle(scrollHandler, 200)
+ * window.addEventListener('scroll', throttled);
+ *
+ * // You can cancel the trailing throttled invocation.
+ * throttled.cancel()
  */
 function throttle<T extends (...args: any[]) => any>(
   func: T,

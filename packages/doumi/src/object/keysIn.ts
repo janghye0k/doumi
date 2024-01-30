@@ -2,6 +2,7 @@ import { isUndefined } from '../lang';
 
 /**
  * Create an array of a given object's own and inherited enumerable property names.
+ * @since 0.1.0
  * @template {string} T
  * @param {object} object The object to extract keys
  * @returns {T[]} Retruns the array of property names

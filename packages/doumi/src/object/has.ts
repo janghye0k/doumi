@@ -3,6 +3,7 @@ import { splitObjectPath } from './utils';
 
 /**
  * Checks if path is a direct property of object.
+ * @since 0.1.0
  * @param {object} object The object to query
  * @param {string} paths The path to check
  * @returns {boolean} Returns `true` if path exists, else `false`

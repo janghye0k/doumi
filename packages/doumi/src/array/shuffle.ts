@@ -1,5 +1,6 @@
 /**
  * Creates an array of shuffled values, using knuth shuffle
+ * @since 0.1.0
  * @template T
  * @param {T[]} array The array to query
  * @returns {T[]} Returns the new shuffled array.

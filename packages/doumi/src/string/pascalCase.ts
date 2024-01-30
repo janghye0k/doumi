@@ -2,6 +2,7 @@ import camelCase from './camelCase';
 
 /**
  * Convert string to camel case, but the first character of string to upper case
+ * @since 0.1.0
  * @param {string} str The string to convert.
  * @returns {string} Returns the pascal cased string.
  * @example

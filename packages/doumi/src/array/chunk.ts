@@ -2,6 +2,7 @@ import { isNullish } from '../lang';
 
 /**
  * Chunks an array into multiple arrays, each containing size or fewer items.
+ * @since 0.1.0
  * @template T
  * @param {T[]} array The array to process.
  * @param {number} size The length of each chunk

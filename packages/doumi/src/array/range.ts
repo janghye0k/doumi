@@ -1,5 +1,6 @@
 /**
  * A function to create numbered lists of integers,
+ * @since 0.1.0
  * @param size The size of array
  * @param start The start index of array, if `arguments.length === 0`, array started at 0 index
  * @returns {number[]} Returns `size` length array, started at `start`

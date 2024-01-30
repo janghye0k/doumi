@@ -13,6 +13,7 @@ import { keys } from '../object';
  * Executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
  *
  * The first time that the callback is run there is no "return value of the previous calculation". If supplied, an initial value may be used in its place. Otherwise the collection's last element is used as the initial value
+ * @since 0.1.0
  * @param {*} collection The collection to iterate over.
  * @param {(accumulator: any, value: any, index: any, collection: any) => any} reducer The function invoked per iteration.
  * @param {*} [accumulator] The initial value.

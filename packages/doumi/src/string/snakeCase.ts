@@ -1,5 +1,6 @@
 /**
  * Convert string to snake case. https://developer.mozilla.org/en-US/docs/Glossary/Snake_case
+ * @since 0.1.0
  * @param {string} str The string to convert.
  * @returns {string} Returns the snake cased string.
  * @example

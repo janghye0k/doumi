@@ -2,6 +2,7 @@ import tagType from './tagType';
 
 /**
  * Check value is boolean
+ * @since 0.1.0
  * @param {*} value The value to check
  * @returns {value is boolean} Retruns `true` if `value` is boolean, else `false`
  * @example
