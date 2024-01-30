@@ -52,6 +52,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
+          sidebarCollapsed: false,
           remarkPlugins: [
             [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
           ],
@@ -123,7 +124,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'docSidebar',
             position: 'left',
-            label: 'Docs',
+            label: 'Documentation',
           },
           { to: '/demo', label: 'Demo', position: 'left' },
           {

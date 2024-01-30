@@ -53,9 +53,9 @@ function DemoPage({ libSource }) {
           <head>
             <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
             <style>${style}</style>
-            <script defer src="/lib/html-console-output.js"></script>
-            <script defer src="https://cdn.jsdelivr.net/npm/doumi/dist/doumi.js"></script>
-            <script defer type="text/javascript">${script}</script>
+            <script src="/lib/html-console-output.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/doumi/dist/doumi.js"></script>
+            <script type="text/javascript">${script}</script>
           </head>
           <body>
             ${html}
