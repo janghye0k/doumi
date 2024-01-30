@@ -2,6 +2,7 @@
  * Trigger delay
  * @since 0.1.0
  * @param {number} wait The number of milliseconds to delay
+ * @example
  *
  * (async () => {
  *    workDurationOneSecond();

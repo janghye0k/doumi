@@ -27,9 +27,11 @@ type Debounced<T extends (...args: T[]) => any> = {
  * // Invoke `requestData` when clicked, debouncing subsequent calls.
  * $requestApiBtn.addEventListener('click', debounce(requestData, 300, true))
  */
-export function debounce<
-  T extends (...args: any[]) => any = (...args: any[]) => any,
->(func: T, wait: number, immediate: boolean = false): Debounced<T> {
+function debounce<T extends (...args: any[]) => any = (...args: any[]) => any>(
+  func: T,
+  wait: number,
+  immediate: boolean = false
+): Debounced<T> {
   let timeout: number | null = null;
   let result: ReturnType<T>;
   let args: any;

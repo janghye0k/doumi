@@ -27,7 +27,7 @@ type MouseEventKeys<T = HTMLElementEventMap> = {
  * @param {Element} $element Parent element
  * @param {K} eventType Event type to listen for. It should be of the mouse event type
  * @param {string} selector A string containing one or more selectors to match.
- * @param {import('./index').EvtListener<K, T>} listener The object that receives a notification when an event of the specified type occurs.
+ * @param {EvtListener<K, T>} listener The object that receives a notification when an event of the specified type occurs.
  * @param {BindCondition} [condition] Callback function that determine whether to fire an event listener
  * @example
  *
