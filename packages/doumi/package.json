@@ -4,7 +4,7 @@
   "description": "Javascript Utilities",
   "repository": {
     "type": "git",
-    "url": "https://github.com/janghye0k/doumi/tree/main/packages/doumi"
+    "url": "https://github.com/janghye0k/doumi"
   },
   "keywords": [
     "util",
@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/janghye0k/doumi/issues"
   },
-  "homepage": "https://github.com/janghye0k/doumi#readme",
+  "homepage": "https://janghye0k.github.io/doumi",
   "files": [
     "dist",
     "package.json",

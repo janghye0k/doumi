@@ -8,7 +8,7 @@
 
 # doumi
 
-The Doumi is a utility library for JavaScript that provides support for the usual functional suspects (forEach, on, debounce, isEqual...)
+The [Doumi](https://janghye0k.github.io/doumi/) is a utility library for JavaScript that provides support for the usual functional suspects (forEach, on, debounce, isEqual...)
 
 ## Installation
 
@@ -41,13 +41,13 @@ in Browser:
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="doumi.js"></script>
-    <script>
-      doumi.isArray([]); // true
-    </script>
   </head>
   <body></body>
+  <script src="doumi.js"></script>
+  <script>
+    doumi.isArray([]); // true
+  </script>
 </html>
 ```
 
-See the [package source](https://github.com/janghye0k/doumi) for more details.
+See the [package source](https://github.com/janghye0k/doumi/tree/main/packages/doumi) for more details.
