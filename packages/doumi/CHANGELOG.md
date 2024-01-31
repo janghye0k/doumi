@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/janghye0k/doumi/compare/v1.0.0...v1.0.1) (2024-01-31)
+
+### Bug Fixes
+
+- intersection method ([5c598d5](https://github.com/janghye0k/doumi/commit/5c598d5a90d50d1eee9b35a3a6e10aea1b4908ad))
+- jsdocs - add missing type & description ([7e4372d](https://github.com/janghye0k/doumi/commit/7e4372d8a5e35f07f817bd707d593418173150f1))
+- jsdocs & debounce export ([042bb3b](https://github.com/janghye0k/doumi/commit/042bb3b90bfa4ac3259d2a4466e725941d87e6a5))
+
 # [1.0.0](https://github.com/janghye0k/doumi/compare/v0.1.0...v1.0.0) (2024-01-30)
 
 ### Bug Fixes
