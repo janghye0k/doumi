@@ -6,13 +6,13 @@ import { isFunction } from '../lang';
  * @template T
  * @param {T[][] | [...T[][], (value: T, index: number) => any]} arrays The arrays to inspect.
  * @param [transformer] The transformer invoked per element for comparison.
- * @returns {T[]}
+ * @returns {T[]} Returns the new array of intersecting values.
  * @example
  *
  * const arr = [1, 2, 3, 4, 5]
  * const other = [3, 5, 6]
  * intersection(arr, other) // [3, 5]
- * intersection(arr, other, [5], (value) => value > 3) // [4, 5]
+ * intersection(arr, other, [5], (value) => value > 3) // [4, 5, 6]
  */
 function intersection<T>(
   ...arrays: T[][] | [...T[][], (value: T, index: number) => any]

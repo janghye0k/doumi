@@ -42,6 +42,7 @@ type CreateCustomOptions = {
  * @example
  *
  * const $div = create$('div', { className: 'my-class', innerHTML: 'welcome' })
+ * // <div class="my-class">welcome</div>
  */
 function create$<
   K extends keyof HTMLElementTagNameMap,

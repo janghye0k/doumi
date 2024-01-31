@@ -53,7 +53,7 @@ function reduce<T extends Dictionary<any> = Dictionary<any>>(
   ) => DictionaryValue<T>,
   accumulator?: DictionaryValue<T>
 ): DictionaryValue<T>;
-function reduce<T extends Dictionary<any> = ArrayLike<any>, V = any>(
+function reduce<T extends Dictionary<any> = Dictionary<any>, V = any>(
   collection: T,
   reducer: (
     accumulator: V,

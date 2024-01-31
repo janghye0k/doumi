@@ -3,8 +3,8 @@ import sum from './sum';
 /**
  * Computes the average of the values
  * @since 0.1.0
- * @param {number[]} values
- * @returns {number}
+ * @param {number[]} values The values to calculate.
+ * @returns {number} Returns the average of values
  * @example
  *
  * average([1, 2, 3]) // 2

@@ -3,7 +3,7 @@
  * @since 0.1.0
  * @param {object} target The target object to copy to.
  * @param {...object} sources The source object from which to copy properties.
- * @returns {any}
+ * @returns {any} Returns the merged `target` object.
  * @example
  *
  * assign({}, { x: 1 }, { y: 10 }) // { x: 1, y: 10 }

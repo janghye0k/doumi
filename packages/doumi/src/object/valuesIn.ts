@@ -1,11 +1,11 @@
-import type { Dictionary } from '../index';
+import type { Collection } from '../index';
 import keysIn from './keysIn';
 
 /**
  * Create an array of a given object's own and inherited enumerable string-keyed property values.
  * @since 0.1.0
  * @template [T = any]
- * @param {object | Dictionary<T> | ArrayLike<T>} object The object to extract values
+ * @param {Collection<T>} object The object to extract values
  * @returns {T[]} Returns the array of property values.
  * @example
  *
@@ -16,9 +16,7 @@ import keysIn from './keysIn';
  * Foo.prototype.c = 3
  * valuesIn(new Foo()) // [1, 2, 3]
  */
-const valuesIn = <T = any>(
-  object: object | Dictionary<T> | ArrayLike<T>
-): T[] => {
+const valuesIn = <T = any>(object: Collection<T>): T[] => {
   return /** @type {T[]} */ keysIn(object).map((key) => (object as any)[key]);
 };
 

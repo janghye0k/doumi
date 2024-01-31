@@ -14,8 +14,8 @@ import keys from './keys';
  *   anna: { class: 3, grade: 'C' },
  *   smith: { class: 2, grade: 'B' },
  * };
- * findKey(obj, (o) => 'class' in o) // 'smith'
- * findKey(obj, (o) => o.class === 3) // 'anna'
+ * findLastKey(obj, (o) => 'class' in o) // 'smith'
+ * findLastKey(obj, (o) => o.class === 3) // 'anna'
  */
 const findLastKey = <T extends object>(
   object: T,

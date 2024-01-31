@@ -1,8 +1,8 @@
 /**
  * Get Object.prototype.toString() type of value
  * @since 0.1.0
- * @param {*} value
- * @returns {string}
+ * @param {*} value The value to check type
+ * @returns {string} The prototype of `value`
  * @example
  *
  * tagType({}) // 'Object'

@@ -6,14 +6,15 @@ import { isFunction } from '../lang';
  * @since 0.1.0
  * @template T
  * @param {T[]} array The array to inspect.
- * @param {T[][] | [...T[][], (value: T, index: number) => any]} other The values to exclude.
+ * @param {T[][] | [...T[][], (value: T, index: number) => any]} other The arrays to exclude.
  * @param [transformer] The transformer invoked per element for comparison.
- * @returns {T[]}
+ * @returns {T[]} Returns the new array of filtered values.
  * @example
  *
  * const arr = [1, 2, 3, 4, 5]
  * const other = [3, 5, 6]
  * difference(arr, other) // [1, 2, 4]
+ * difference(arr, other, [2], (v) => v % 5) // [2, 4]
  */
 function difference<T>(
   array: T[],
