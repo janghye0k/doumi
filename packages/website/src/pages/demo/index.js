@@ -39,6 +39,7 @@ const files = {
 };
 
 function DemoPage({ libSource }) {
+  const { siteConfig } = useDocusaurusContext();
   const monaco = useMonaco();
   const { colorMode } = useColorMode();
   const codeTheme = useMemo(
@@ -77,7 +78,7 @@ function DemoPage({ libSource }) {
           <body>
             ${html}
           </body>
-          <script src="/lib/html-console-output.js"></script>
+          <script src="${siteConfig.baseUrl === '/' ? '' : siteConfig.baseUrl}/lib/html-console-output.js"></script>
           <script src="https://cdn.jsdelivr.net/npm/doumi/dist/doumi.js"></script>
           <script type="text/javascript">${script}</script>
         </html>
