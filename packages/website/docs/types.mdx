@@ -1,0 +1,146 @@
+---
+title: Types
+---
+
+## Collection
+
+### ArrayLike
+
+```ts
+type ArrayLike<T> = {
+  [index: number]: T;
+  length: number;
+};
+```
+
+### ArrayLikeValue
+
+```ts
+type ArrayLikeValue<T> = T extends ArrayLike<infer U> ? U : never;
+```
+
+### Collection
+
+```ts
+type Collection<T> = ArrayLike<T> | Dictionary<T>;
+```
+
+### CollectionValue
+
+```ts
+type CollectionValue<T> =
+  T extends ArrayLike<infer U> ? U : T extends Dictionary<infer U> ? U : never;
+```
+
+### Dictionary
+
+```ts
+type Dictionary<T> = {
+  [key: string]: T;
+};
+```
+
+### DictionaryValue
+
+```ts
+type DictionaryValue<T> = T extends Dictionary<infer U> ? U : never;
+```
+
+## DOM
+
+### AriaRole
+
+```ts
+/** All the WAI-ARIA 1.1 role attribute values from https://www.w3.org/TR/wai-aria-1.1/#role_definitions */
+type AriaRole =
+  | 'alert'
+  | 'alertdialog'
+  | 'application'
+  | 'article'
+  | 'banner'
+  | 'button'
+  | 'cell'
+  | 'checkbox'
+  | 'columnheader'
+  | 'combobox'
+  | 'complementary'
+  | 'contentinfo'
+  | 'definition'
+  | 'dialog'
+  | 'directory'
+  | 'document'
+  | 'feed'
+  | 'figure'
+  | 'form'
+  | 'grid'
+  | 'gridcell'
+  | 'group'
+  | 'heading'
+  | 'img'
+  | 'link'
+  | 'list'
+  | 'listbox'
+  | 'listitem'
+  | 'log'
+  | 'main'
+  | 'marquee'
+  | 'math'
+  | 'menu'
+  | 'menubar'
+  | 'menuitem'
+  | 'menuitemcheckbox'
+  | 'menuitemradio'
+  | 'navigation'
+  | 'none'
+  | 'note'
+  | 'option'
+  | 'presentation'
+  | 'progressbar'
+  | 'radio'
+  | 'radiogroup'
+  | 'region'
+  | 'row'
+  | 'rowgroup'
+  | 'rowheader'
+  | 'scrollbar'
+  | 'search'
+  | 'searchbox'
+  | 'separator'
+  | 'slider'
+  | 'spinbutton'
+  | 'status'
+  | 'switch'
+  | 'tab'
+  | 'table'
+  | 'tablist'
+  | 'tabpanel'
+  | 'term'
+  | 'textbox'
+  | 'timer'
+  | 'toolbar'
+  | 'tooltip'
+  | 'tree'
+  | 'treegrid'
+  | 'treeitem'
+  | (string & object);
+```
+
+### Evt
+
+```ts
+type Evt<
+  K extends keyof HTMLElementEventMap,
+  T extends Element = HTMLElement,
+> = HTMLElementEventMap[K] & {
+  currentTarget: T;
+};
+```
+
+### EvtListener
+
+```ts
+type EvtListener<
+  K extends keyof HTMLElementEventMap,
+  T extends Element = HTMLElement,
+> = (this: T, event: Evt<K, T>) => any;
+```

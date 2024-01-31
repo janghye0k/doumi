@@ -7,6 +7,7 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 
 const url = 'https://janghye0k.github.io';
+// const baseUrl = '/';
 const baseUrl = process.env.NODE_ENV === 'development' ? '/' : '/doumi';
 
 /** @type {import('@docusaurus/types').Config} */
@@ -111,7 +112,6 @@ const config = {
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: false,
-        respectPrefersColorScheme: true,
       },
       navbar: {
         title: 'DOUMI',

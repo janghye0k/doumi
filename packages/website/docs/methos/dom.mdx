@@ -1,18 +1,372 @@
 ---
-title: Dom
+title: DOM
 description: Dom Methods
 ---
 
-# Dom Methods
+import DocsTable from '@site/src/components/DocsTable';
 
-### bind$
+# DOM Methods
 
-### create$
+## bind$
 
-### find$
+> Function to pre-register events for elements whose existence is uncertain by registering events on the parent element.
 
-### findAll$
+**Since**: _0.1.0_
 
-### off
+**Arguments**
 
-### on
+<DocsTable
+  datas={[
+    { param: '$element', type: 'Element', description: 'Parent element' },
+    {
+      param: 'eventType',
+      type: 'string',
+      description:
+        'Event type to listen for. It should be of the mouse event type',
+    },
+    {
+      param: 'selector',
+      type: 'string',
+      description: 'A string containing one or more selectors to match.',
+    },
+    {
+      param: 'listener',
+      type: { value: 'EvtListener', link: '../types#EvtListener' },
+      description:
+        'The object that receives a notification when an event of the specified type occurs.',
+    },
+    {
+      param: '[condition]',
+      type: 'Function',
+      description:
+        'Callback function that determine whether to fire an event listener',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare function bind$<
+  K extends MouseEventKeys,
+  T extends Element = HTMLElement,
+>(
+  $element: Element,
+  eventType: K,
+  selector: string,
+  listener: EvtListener<K, T>,
+  condition: BindCondition
+): void;
+
+// Types
+
+/**
+ * Callback function that determine whether to fire an event listener
+ * @callback BindCondition
+ * @param {Element} parent The parent element where the event is actually registered
+ * @param {Element} target The selector element on which to fire the event.
+ * @returns {boolean} Whether to fire an event
+ */
+type BindCondition<P extends Element = Element, T extends Element = Element> = (
+  parent: P,
+  target: T
+) => boolean;
+
+type MouseEventKeys =
+  | 'auxclick'
+  | 'click'
+  | 'contextmenu'
+  | 'dblclick'
+  | 'mousedown'
+  | 'mouseenter'
+  | 'mouseleave'
+  | 'mousemove'
+  | 'mouseout'
+  | 'mouseover'
+  | 'mouseup';
+```
+
+**Examples**
+
+```js
+bind$(document.body, 'click', '.some-selector', (event) => console.log(event));
+```
+
+<br />
+
+## create$
+
+> Create Element
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'tagName',
+      type: 'string',
+      description: 'The tag name of element',
+    },
+    {
+      param: '[options]',
+      type: 'Object',
+      description: 'The element options',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare function create$<
+  K extends keyof HTMLElementTagNameMap,
+  T = HTMLElementTagNameMap[K],
+>(tagName: K, options?: CreateOptions<T>): HTMLElementTagNameMap[K];
+
+// Types
+
+type CreateOptions<T> = Partial<Writable<OmitFunction<T>>> &
+  CreateCustomOptions;
+
+type CreateCustomOptions = {
+  id?: string | undefined;
+  className?: string | undefined;
+  classList?: string[] | undefined;
+  role?: AriaRole;
+  style?: Partial<CSSStyleDeclaration> | undefined;
+  dataset?: Record<string, string | boolean | number | undefined> | undefined;
+};
+
+type Writable<T> = { [P in WritableKeys<T>]: T[P] };
+
+type OmitFunction<T> = { [P in Exclude<keyof T, FunctionKeys<T>>]: T[P] };
+
+type WritableKeys<T> = {
+  [P in keyof T]-?: IfEquals<
+    { [Q in P]: T[P] },
+    { -readonly [Q in P]: T[P] },
+    P,
+    never
+  >;
+}[keyof T];
+
+type FunctionKeys<T> = {
+  [K in keyof T]: T[K] extends (...args: any[]) => any ? K : never;
+}[keyof T];
+
+type IfEquals<X, Y, A = X, B = never> =
+  (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? A : B;
+```
+
+**Examples**
+
+```js
+const $div = create$('div', { className: 'my-class', innerHTML: 'welcome' });
+// <div class="my-class">welcome</div>
+```
+
+<br />
+
+## find$
+
+> Returns the first `Element` within the document that matches the specified selector, or group of selectors. If no matches are found, `null` is returned.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'selector',
+      type: 'string',
+      description: 'A string containing one or more selectors to match.',
+    },
+    {
+      param: '[element]',
+      type: 'Element',
+      description: 'The target element to find selector',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable datas={[{ type: 'Element | null', description: '' }]} />
+
+**Declaration**
+
+```ts
+declare function find$<T extends Element = HTMLElement>(
+  selector: string,
+  element?: Element
+): T | null;
+```
+
+**Examples**
+
+```js
+find$('.some-class');
+```
+
+<br />
+
+## findAll$
+
+> Returns a static (not live) NodeList representing a list of the document's elements that match the specified group of selectors.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'selector',
+      type: 'string',
+      description: 'A string containing one or more selectors to match.',
+    },
+    {
+      param: '[element]',
+      type: 'Element',
+      description: 'The target element to find selector',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'NodeListOf<Element>',
+      description:
+        'A non-live `NodeList` containing one `Element` object for each element that matches at least one of the specified selectors or an empty `NodeList` in case of no matches.',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare function findAll$<T extends Element = HTMLElement>(
+  selector: string,
+  element?: Element
+): NodeListOf<T>;
+```
+
+**Examples**
+
+```js
+const $items = findAll$('.some-item');
+```
+
+<br />
+
+## on
+
+> Bind event listener
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'element', type: 'T', description: 'The element to bind event' },
+    {
+      param: 'eventType',
+      type: 'string',
+      description:
+        'A case-sensitive string representing the event type to listen for.',
+    },
+    {
+      param: 'listener',
+      type: { value: 'EvtListener', link: '../types#EvtListener' },
+      description:
+        'The object that receives a notification when an event of the specified type occurs.',
+    },
+    {
+      param: '[options]',
+      type: {
+        value: 'AddEventListenerOptions',
+        link: 'https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options',
+      },
+      description:
+        'An object that specifies characteristics about the event listener. If `true`, allows you to take advantage of event bubbling for events that otherwise don’t support it.',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const on: <
+  K extends keyof HTMLElementEventMap,
+  T extends Element = HTMLElement,
+>(
+  element: T,
+  eventType: K,
+  listener: EvtListener<K, T>,
+  options?: AddEventListenerOptions
+) => void;
+```
+
+**Examples**
+
+```js
+const handler = () => console.log('hi');
+on(document.body, 'click', handler);
+document.body.click(); // 'hi'
+```
+
+<br />
+
+## off
+
+> Unbind event listener
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'element', type: 'T', description: 'The element to unbind event' },
+    {
+      param: 'eventType',
+      type: 'string',
+      description:
+        'A case-sensitive string representing the event type to listen for.',
+    },
+    {
+      param: 'listener',
+      type: { value: 'EvtListener', link: '../types#EvtListener' },
+      description:
+        'The object that receives a notification when an event of the specified type occurs.',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const off: <
+  K extends keyof HTMLElementEventMap,
+  T extends Element = HTMLElement,
+>(
+  element: T,
+  eventType: K,
+  listener: EvtListener<K, T>
+) => void;
+```
+
+**Examples**
+
+```js
+const handler = () => console.log('hi');
+document.body.addEventListener('click', handler);
+document.body.click(); // 'hi'
+off(document.body, 'click', handler);
+document.body.click(); //
+```

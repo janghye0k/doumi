@@ -3,14 +3,182 @@ title: String
 description: String Methods
 ---
 
+import DocsTable from '@site/src/components/DocsTable';
+
 # String Methods
 
-### camelCase
+## camelCase
 
-### capitalize
+> Converts string to camel case. https://developer.mozilla.org/en-US/docs/Glossary/Camel_case
 
-### kebabCase
+**Since**: _0.1.0_
 
-### pascalCase
+**Arguments**
 
-### snakeCase
+<DocsTable
+  datas={[
+    { param: 'str', type: 'string', description: 'The string to convert.' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'string', description: 'Returns the camel cased string.' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function camelCase(str?: string): string;
+```
+
+**Examples**
+
+```js
+camelCase('foo bar'); // 'fooBar'
+camelCase('foo-bar'); // 'fooBar'
+camelCase('FOO__bar'); // 'fooBar'
+```
+
+<br />
+
+## capitalize
+
+> Converts the first character of string to upper case and the remaining to lower case
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'str', type: 'string', description: 'The string to capitalize' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'string', description: 'Retruns the capitalized string' }]}
+/>
+
+**Declaration**
+
+```ts
+declare const capitalize: (str: string) => string;
+```
+
+**Examples**
+
+```js
+capitalize('HELLO'); // 'Hello'
+```
+
+<br />
+
+## kebabCase
+
+> Convert string to kebab case. https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'str', type: 'string', description: 'The string to convert.' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'string', description: 'Returns the kebab cased string.' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function kebabCase(str: string): string;
+```
+
+**Examples**
+
+```js
+kebabCase('foo bar'); // 'foo-bar'
+kebabCase('foo-bar'); // 'foo-bar'
+kebabCase('FOO__ bar'); // 'foo-bar'
+```
+
+<br />
+
+## pascalCase
+
+> Convert string to camel case, but the first character of string to upper case
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'str', type: 'string', description: 'The string to convert.' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'string', description: 'Returns the pascal cased string.' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function pascalCase(str: string): string;
+```
+
+**Examples**
+
+```js
+camelCase('foo bar'); // 'FooBar'
+camelCase('foo-bar'); // 'FooBar'
+camelCase('FOO__bar'); // 'FooBar'
+```
+
+<br />
+
+## snakeCase
+
+> Convert string to snake case. https://developer.mozilla.org/en-US/docs/Glossary/Snake_case
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'str', type: 'string', description: 'The string to convert.' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'string', description: 'Returns the snake cased string.' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function snakeCase(str: string): string;
+```
+
+**Examples**
+
+```js
+snakeCase('foo bar'); // 'foo_bar'
+snakeCase('foo-bar'); // 'foo_bar'
+snakeCase('FOO__ bar'); // 'foo_bar'
+```

@@ -3,56 +3,1026 @@ title: Lang
 description: Lang Methods
 ---
 
+import DocsTable from '@site/src/components/DocsTable';
+
 # Lang Methods
 
-### is
+## is
 
-### isArray
+**Since**: _0.1.0_
 
-### isArrayLike
+**Arguments**
 
-### isBlank
+<DocsTable
+  datas={[
+    {
+      param: 'object',
+      type: 'any',
+      description: 'The object (constructor) to used for comparison',
+    },
+    { param: 'value', type: 'any', description: 'The value to compare' },
+  ]}
+/>
 
-### isBoolean
+**Returns**
 
-### isDate
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Retruns `true` if the `value` is `object`, else `false`',
+    },
+  ]}
+/>
 
-### isDateLike
+**Declaration**
 
-### isElement
+```ts
+declare const is: <T extends ConstructorObject>(
+  object: T,
+  value: unknown
+) => value is T;
+```
 
-### isEmpty
+**Examples**
 
-### isEqual
+```js
+is(String, 'str'); // true
+is(Boolean, true); // true
+is(Boolean, 'true'); // false
+```
 
-### isError
+<br />
 
-### isFunction
+## isArray
 
-### isMap
+> Check value is array
 
-### isNull
+**Since**: _0.1.0_
 
-### isNullish
+**Arguments**
 
-### isNumber
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
 
-### isObject
+**Returns**
 
-### isPlainObject
+<DocsTable
+  datas={[
+    {
+      type: 'value is any[]',
+      description: 'Retruns `true` if `value` is array, else `false`',
+    },
+  ]}
+/>
 
-### isRegExp
+**Declaration**
 
-### isSet
+```ts
+declare const isArray: <T = any>(value: unknown) => value is T[];
+```
 
-### isString
+**Examples**
 
-### isSymbol
+```js
+isArray([1, 2, 3]); // true
+isArray(new Array()); // true
+isArray(1); // false
+```
 
-### isUndefined
+<br />
 
-### isWeakMap
+## isArrayLike
 
-### isWeakSet
+> Check value is array-like
 
-### tagType
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'value is T',
+      description: 'Retruns `true` if `value` is array-like, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isArrayLike: <T extends ArrayLike<any>>(value: any) => value is T;
+```
+
+**Examples**
+
+```js
+isArrayLike([1, 2, 3]); // true
+isArrayLike('string'); // true
+isArrayLike(1); // false
+```
+
+<br />
+
+## isBlank
+
+> Check value is blank
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Retruns `true` if `value.length` is falsy, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isBlank: (value: unknown) => boolean;
+```
+
+**Examples**
+
+```js
+isBlank(''); // true
+isBlank(undefined); // true
+isBlank('a'); // false
+```
+
+<br />
+
+## isBoolean
+
+> Check value is boolean
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'value is boolean',
+      description: 'Retruns `true` if `value` is boolean, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isBoolean: (value: unknown) => value is boolean;
+```
+
+**Examples**
+
+```js
+isBoolean(true); // true
+isBoolean('true'); // false
+```
+
+<br />
+
+## isDate
+
+> Check value is date
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'value is Date',
+      description: 'Retruns `true` if `value` is date, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isDate: (value: unknown) => value is Date;
+```
+
+**Examples**
+
+```js
+isDate(new Date()); // true
+isDate('2024-01-01'); // false
+```
+
+<br />
+
+## isDateLike
+
+> Check value is date-like
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Retruns `true` if `value` is date-like, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isDateLike: <T = unknown>(value: T) => boolean;
+```
+
+**Examples**
+
+```js
+isDateLike(new Date()); // true
+isDateLike('2024-01-01'); // true
+isDateLike(100000000); // true
+isDateLike('string'); // false
+```
+
+<br />
+
+## isElement
+
+> Check value is element
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'value is Element',
+      description: 'Retruns `true` if `value` is element, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isElement: (value: unknown) => value is Element;
+```
+
+**Examples**
+
+```js
+isElement(document.body); // true
+isElement('<div></div>'); // false
+```
+
+<br />
+
+## isEmpty
+
+> Check value is empty
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Retruns `true` if `value` is empty, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isEmpty: (value: unknown) => boolean;
+```
+
+**Examples**
+
+```js
+isEmpty([]); // true
+isEmpty({}); // true
+isEmpty(new Set()); // true
+isEmpty(false); // false
+```
+
+<br />
+
+## isEqual
+
+> Check values are equal
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'valu', type: 'any', description: 'value' },
+    { param: 'compar', type: 'any', description: 'compare' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Retruns `true` if the values are equal, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isEqual: (value: any, compare: any) => boolean;
+```
+
+**Examples**
+
+```js
+const obj = { a: 1 };
+
+isEqual(obj, obj); // true
+isEqual(obj, { ...obj }); // false
+```
+
+<br />
+
+## isError
+
+> Check value is Error
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'value is Error',
+      description: 'Retruns `true` if `value` is error, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isError: (value: unknown) => value is Error;
+```
+
+**Examples**
+
+```js
+isError(new Error()); // true
+isError('error'); // false
+```
+
+<br />
+
+## isFunction
+
+> Check value is function
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'value is Function',
+      description: 'Retruns `true` if `value` is function, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isFunction: (value: unknown) => value is (...arg: any[]) => any;
+```
+
+**Examples**
+
+```js
+isFunction(() => null); // true
+isFunction({}); // false
+```
+
+<br />
+
+## isMap
+
+> Check value is Map
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Retruns `true` if `value` is Map, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isMap: <T = Map<any, any>>(value: unknown) => value is T;
+```
+
+**Examples**
+
+```js
+isMap(new Map()); // true
+isMap({ a: 1, b: 2 }); // false
+```
+
+<br />
+
+## isNull
+
+> Check value is null
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'value is null',
+      description: 'Retruns `true` if `value` is null, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isNull: (value: unknown) => value is null;
+```
+
+**Examples**
+
+```js
+isNull(null); // true
+isNull(true); // false
+```
+
+<br />
+
+## isNullish
+
+> Check value is nullish
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description:
+        'Retruns `true` if `value` is null or undefined, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isNullish: (value: unknown) => boolean;
+```
+
+**Examples**
+
+```js
+isNullish(null); // true
+isNullish(undefined); // true
+isNullish(0); // false
+```
+
+<br />
+
+## isNumber
+
+> Check value is number
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'value is number',
+      description: 'Retruns `true` if `value` is number, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isNumber: (value: unknown) => value is number;
+```
+
+**Examples**
+
+```js
+isNumber(123); // true
+isNumber('123'); // false
+```
+
+<br />
+
+## isObject
+
+> Check value is object-like
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Retruns `true` if `value` is object-like, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isObject: <T extends object = Dictionary<any>>(
+  value: unknown
+) => value is T;
+```
+
+**Examples**
+
+```js
+isObject({}); // true
+isObject(() => false); // true
+isObject([]); // true
+isObject(1); // false
+```
+
+<br />
+
+## isPlainObject
+
+> Check value is plain object
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Retruns `true` if `value` is plain object, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isPlainObject: <T extends Object = Dictionary<any> & Object>(
+  value: unknown
+) => value is T;
+```
+
+**Examples**
+
+```js
+isPlainObject({}); // true
+isPlainObject(new Map()); // false
+isPlainObject(1); // false
+```
+
+<br />
+
+## isRegExp
+
+> Check value is RegExp
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'value is RegExp',
+      description: 'Retruns `true` if `value` is RegExp, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isRegExp: (value: unknown) => value is RegExp;
+```
+
+**Examples**
+
+```js
+isRegExp(/\d/gi); // true
+isRegExp(new RegExp()); // true
+isRegExp('d'); // false
+```
+
+<br />
+
+## isSet
+
+> Check value is Set
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Retruns `true` if `value` is Set, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isSet: <T extends Set<any> = Set<any>>(
+  value: unknown
+) => value is T;
+```
+
+**Examples**
+
+```js
+isSet(new Set()); // true
+isSet([1, 2, 3]); // false
+```
+
+<br />
+
+## isString
+
+> Check value is string
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'value is string',
+      description: 'Retruns `true` if `value` is string, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isString: (value: unknown) => value is string;
+```
+
+**Examples**
+
+```js
+isString('is this string?'); // true
+isString(0); // false
+```
+
+<br />
+
+## isSymbol
+
+> Check value is symbol
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'value is symbol',
+      description: 'Retruns `true` if `value` is symbol, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isSymbol: (value: unknown) => value is symbol;
+```
+
+**Examples**
+
+```js
+isSymbol(Symbol('a')); // true
+isSymbol('a'); // false
+```
+
+<br />
+
+## isUndefined
+
+> Check value is undefined
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'value is undefined',
+      description: 'Retruns `true` if `value` is undefined, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isUndefined: (value: unknown) => value is undefined;
+```
+
+**Examples**
+
+```js
+isUndefined(undefined); // true
+isUndefined(0); // false
+```
+
+<br />
+
+## isWeakMap
+
+> Check value is WeakMap
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Retruns `true` if `value` is WeakMap, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isWeakMap: <T extends WeakMap<any, any> = WeakMap<any, any>>(
+  value: unknown
+) => value is T;
+```
+
+**Examples**
+
+```js
+isWeakMap(new WeakMap()); // true
+isWeakMap(new Map()); // false
+```
+
+<br />
+
+## isWeakSet
+
+> Check value is WeakSet
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'value', type: 'any', description: 'The value to check' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Retruns `true` if `value` is WeakSet, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const isWeakSet: <T extends WeakSet<any> = WeakSet<any>>(
+  value: unknown
+) => value is T;
+```
+
+**Examples**
+
+```js
+isWeakSet(new WeakSet()); // true
+isWeakSet(new Set()); // false
+```
+
+<br />
+
+## tagType
+
+> Get Object.prototype.toString() type of value
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'valu', type: 'any', description: 'The value to check type' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'string', description: 'The prototype of `value`' }]}
+/>
+
+**Declaration**
+
+```ts
+declare const tagType: (value: any) => string;
+```
+
+**Examples**
+
+```js
+tagType({}); // 'Object'
+tagType(1); // 'Number'
+```

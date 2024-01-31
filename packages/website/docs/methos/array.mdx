@@ -3,14 +3,214 @@ title: Array
 description: Array Methods
 ---
 
+import DocsTable from '@site/src/components/DocsTable';
+
 # Array Methods
 
-### chunk
+## chunk
 
-### difference
+> Chunks an array into multiple arrays, each containing size or fewer items.
 
-### intersection
+**Since**: _0.1.0_
 
-### range
+**Arguments**
 
-### shuffle
+<DocsTable
+  datas={[
+    { param: 'array', type: 'any[]', description: 'The array to process.' },
+    { param: 'size', type: 'number', description: 'The length of each chunk' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'Array<any[]>', description: 'Returns new array of chunks' }]}
+/>
+
+**Declaration**
+
+```ts
+declare const chunk: <T>(array: T[], size: number) => T[][];
+```
+
+**Examples**
+
+```js
+const array = [1, 2, 3, 4, 5, 6];
+chunk(array, 2); // [[1, 2], [3, 4], [5, 6]]
+```
+
+<br />
+
+## difference
+
+> Creates an array of array values not included in the other given arrays. The order and references of result values are determined by the first array.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'array', type: 'any[]', description: 'The array to inspect.' },
+    {
+      param: 'other',
+      type: '...any[]',
+      description: 'The arrays to exclude.',
+    },
+    {
+      param: '[transformer]',
+      type: 'Function',
+      description: 'The transformer invoked per element for comparison.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    { type: 'any[]', description: 'Returns the new array of filtered values.' },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare function difference<T>(
+  array: T[],
+  ...other: T[][] | [...T[][], (value: T, index: number) => any]
+): T[];
+```
+
+**Examples**
+
+```js
+const arr = [1, 2, 3, 4, 5];
+const other = [3, 5, 6];
+difference(arr, other); // [1, 2, 4]
+difference(arr, other, [2], (v) => v % 5); // [2, 4]
+```
+
+<br />
+
+## intersection
+
+> Creates an array of values that are included in all given arrays. The order and references of result values are determined by the first array.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'array', type: '...any[]', description: 'The array to inspect.' },
+    {
+      param: '[transformer]',
+      type: 'Function',
+      description: 'The transformer invoked per element for comparison.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'any[]',
+      description: 'Returns the new array of intersecting values.',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare function intersection<T>(
+  ...arrays: T[][] | [...T[][], (value: T, index: number) => any]
+): T[];
+```
+
+**Examples**
+
+```js
+const arr = [1, 2, 3, 4, 5];
+const other = [3, 5, 6];
+intersection(arr, other); // [3, 5]
+intersection(arr, other, [5], (value) => value > 3); // [4, 5, 6]
+```
+
+<br />
+
+## range
+
+> A function to create numbered lists of integers,
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'start',
+      type: 'number',
+      description:
+        'The start value of array, if `arguments.length === 0`, array started at 0 value',
+    },
+    { param: 'size', type: 'number', description: 'The size of array' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'number[]',
+      description: 'Returns `size` length array, started at `start`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare function range(size: number): number[];
+declare function range(start: number, size: number): number[];
+```
+
+**Examples**
+
+```js
+range(5); // [0, 1, 2, 3, 4]
+range(3, 4); // [3, 4, 5, 6]
+```
+
+<br />
+
+## shuffle
+
+> Creates an array of shuffled values, using knuth shuffle
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[{ param: 'array', type: 'any[]', description: 'The array to query' }]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'any[]', description: 'Returns the new shuffled array.' }]}
+/>
+
+**Declaration**
+
+```ts
+declare const shuffle: <T>(array: T[]) => T[];
+```

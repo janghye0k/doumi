@@ -73,13 +73,13 @@ function DemoPage({ libSource }) {
           <head>
             <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
             <style>${style}</style>
-            <script src="/lib/html-console-output.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/doumi/dist/doumi.js"></script>
-            <script type="text/javascript">${script}</script>
           </head>
           <body>
             ${html}
           </body>
+          <script src="/lib/html-console-output.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/doumi/dist/doumi.js"></script>
+          <script type="text/javascript">${script}</script>
         </html>
       `;
       setSrcDoc((cur) => (cur === doc ? doc + '  ' : doc));

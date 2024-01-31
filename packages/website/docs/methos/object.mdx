@@ -3,34 +3,702 @@ title: Object
 description: Object Methods
 ---
 
+import DocsTable from '@site/src/components/DocsTable';
+
 # Object Methods
 
-### assign
+## assign
 
-### assignIn
+> Copy the values of all of the enumerable own properties from one or more source objects to a target object. Returns the target object.
 
-### entries
+**Since**: _0.1.0_
 
-### entriesIn
+**Arguments**
 
-### findKey
+<DocsTable
+  datas={[
+    {
+      param: 'target',
+      type: 'object',
+      description: 'The target object to copy to.',
+    },
+    {
+      param: 'sources',
+      type: '...object',
+      description: 'The source object from which to copy properties.',
+    },
+  ]}
+/>
 
-### findLastKey
+**Returns**
 
-### get
+<DocsTable
+  datas={[{ type: 'any', description: 'Returns the merged `target` object.' }]}
+/>
 
-### has
+**Declaration**
 
-### keys
+```ts
+declare const assign: {
+  <T extends {}, U>(target: T, source: U): T & U;
+  <T_1 extends {}, U_1, V>(
+    target: T_1,
+    source1: U_1,
+    source2: V
+  ): T_1 & U_1 & V;
+  <T_2 extends {}, U_2, V_1, W>(
+    target: T_2,
+    source1: U_2,
+    source2: V_1,
+    source3: W
+  ): T_2 & U_2 & V_1 & W;
+  (target: object, ...sources: any[]): any;
+};
+```
 
-### keysIn
+**Examples**
 
-### omit
+```js
+assign({}, { x: 1 }, { y: 10 }); // { x: 1, y: 10 }
+```
 
-### pick
+<br />
 
-### set
+## assignIn
 
-### values
+> This method is like assign except that it iterates over own and inherited source properties.
 
-### valuesIn
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'object', type: 'object', description: 'The object to merged' },
+    { param: 'sources', type: '...any', description: 'The source objects' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'any', description: 'Returns the merged `target` object.' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function assignIn<T extends object, U>(object: T, source: U): T & U;
+declare function assignIn<T extends object, U, V>(
+  object: T,
+  source1: U,
+  source2: V
+): T & U & V;
+declare function assignIn<T extends object, U, V, W>(
+  object: T,
+  source1: U,
+  source2: V,
+  source3: W
+): T & U & V & W;
+declare function assignIn(object: any, ...sources: any[]): any;
+```
+
+**Examples**
+
+```js
+function Foo() {
+  this.a = 1;
+  this.b = 2;
+}
+Foo.prototype.c = 3;
+
+assignIn({ x: 'x' }, new Foo()); // { x: 'x', a: 1, b: 2, c: 3 }
+```
+
+<br />
+
+## entries
+
+> Create an array of a given object's own enumerable string-keyed property key-value pairs.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'object',
+      type: { value: 'Collection', link: '../types#Collection' },
+      description: 'The object to extract entries',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'Array<[any, string | number]>',
+      description: 'Returns the array of key-value pairs',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const entries: <V = any, K extends string = string>(
+  object: Collection<V>
+) => [V, K][];
+```
+
+**Examples**
+
+```js
+const object = { a: 1, b: '2' };
+const results = entries(object); // [['a', 1], ['b', '2']]
+```
+
+<br />
+
+## entriesIn
+
+> Create an array of a given object's own and inherited enumerable string-keyed property key-value pairs.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'object',
+      type: { value: 'Collection', link: '../types#Collection' },
+      description: 'The object to extract entries',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'Array<[any, string | number]>',
+      description: 'Returns the array of key-value pairs',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const entriesIn: <V = any, K extends string = string>(
+  object: Collection<V>
+) => [V, K][];
+```
+
+**Examples**
+
+```js
+function Foo() {
+  this.a = 1;
+  this.b = 2;
+}
+Foo.prototype.c = 3;
+const results = entriesIn(new Foo()); // [['a', 1], ['b', '2'], ['c', 3]]
+```
+
+<br />
+
+## findKey
+
+> Returns the key of the first element predicate
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'object', type: 'object', description: 'The object to inspect.' },
+    {
+      param: 'predicate',
+      type: 'Function',
+      description: 'The function invoked per iteration.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'string | undefined',
+      description: 'Returns the key of the matched element, else undefined.',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const findKey: <T extends object>(
+  object: T,
+  predicate: (value: any) => boolean
+) => string | undefined;
+```
+
+**Examples**
+
+```js
+const obj = {
+  john: { class: 1, grade: 'A' },
+  anna: { class: 3, grade: 'C' },
+  smith: { class: 2, grade: 'B' },
+};
+findKey(obj, (o) => 'class' in o); // 'john'
+findKey(obj, (o) => o.class === 3); // 'anna'
+```
+
+<br />
+
+## findLastKey
+
+> Returns the key of the last element predicate
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'object', type: 'object', description: 'The object to inspect.' },
+    {
+      param: 'predicate',
+      type: 'Function',
+      description: 'The function invoked per iteration.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'string | undefined',
+      description: 'Returns the key of the matched element, else undefined.',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const findLastKey: <T extends object>(
+  object: T,
+  predicate: (value: any) => boolean
+) => string | undefined;
+```
+
+**Examples**
+
+```js
+const obj = {
+  john: { class: 1, grade: 'A' },
+  anna: { class: 3, grade: 'C' },
+  smith: { class: 2, grade: 'B' },
+};
+findLastKey(obj, (o) => 'class' in o); // 'smith'
+findLastKey(obj, (o) => o.class === 3); // 'anna'
+```
+
+<br />
+
+## get
+
+> Get the value at paths of object
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'object', type: 'object', description: 'The object to query.' },
+    {
+      param: 'paths',
+      type: 'string',
+      description: 'The path of the property to get.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    { type: 'any | undefined', description: 'Returns the resolved value.' },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const get: <T = any>(object: object, paths: string) => T | undefined;
+```
+
+**Examples**
+
+```js
+onst obj = { a: { b: [{}, { c: 3 }] } };
+ get(obj, 'a.b[1].c') // 3
+```
+
+<br />
+
+## has
+
+> Checks if path is a direct property of object.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'object', type: 'object', description: 'The object to query' },
+    { param: 'paths', type: 'string', description: 'The path to check' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Returns `true` if path exists, else `false`',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const has: (object: object, paths: string) => boolean;
+```
+
+**Examples**
+
+```js
+const obj = { a: { b: c: 3 } }
+ has('a') // true
+ has('a.b.c') // true
+ has('a.b.d') // false
+```
+
+<br />
+
+## keys
+
+> Create an array of a given object's own enumerable string-keyed property names.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'object',
+      type: 'object',
+      description: 'The object to extract keys',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    { type: 'string[]', description: 'Retruns the array of property names' },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const keys: <T extends string>(object: object) => T[];
+```
+
+**Examples**
+
+```js
+keys({ a: 1, b: 2 }); // ['a', 'b']
+
+function Foo() {
+  this.a = 1;
+  this.b = 2;
+}
+Foo.prototype.c = 3;
+keys(new Foo()); // ['a', 'b']
+```
+
+<br />
+
+## keysIn
+
+> Create an array of a given object's own and inherited enumerable property names.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'object',
+      type: 'object',
+      description: 'The object to extract keys',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    { type: 'string[]', description: 'Retruns the array of property names' },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const keysIn: <T extends string>(object: object) => T[];
+```
+
+**Examples**
+
+```js
+keysIn({ a: 1, b: 2 }); // ['a', 'b']
+
+function Foo() {
+  this.a = 1;
+  this.b = 2;
+}
+Foo.prototype.c = 3;
+keysIn(new Foo()); // ['a', 'b', 'c']
+```
+
+<br />
+
+## omit
+
+> Create object omitted by given keys
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'object', type: 'object', description: 'object' },
+    {
+      param: 'keys',
+      type: '...string',
+      description: 'The property keys to omit.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'object', description: 'Returns omitted object' }]}
+/>
+
+**Declaration**
+
+```ts
+declare const omit: <T extends object, K extends keyof T>(
+  object: T,
+  ...keys: K[]
+) => Omit<T, K>;
+```
+
+**Examples**
+
+```js
+const obj = { a: 1, b: 2, c: 3 };
+omit(obj, 'a', 'c'); // { b: 2 }
+```
+
+<br />
+
+## pick
+
+> Create object pickted by given keys
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'objec', type: 'object', description: 'object' },
+    {
+      param: 'keys',
+      type: '...string',
+      description: 'The property keys to pick.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'object', description: 'Returns pickted object' }]}
+/>
+
+**Declaration**
+
+```ts
+declare const pick: <T extends object, K extends keyof T>(
+  object: T,
+  ...keys: K[]
+) => Pick<T, K>;
+```
+
+**Examples**
+
+```js
+const obj = { a: 1, b: 2, c: 3 };
+pick(obj, 'a', 'c'); // { a: 1, c: 3 }
+```
+
+<br />
+
+## set
+
+> Sets the value at path of object.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'object', type: 'object', description: 'The object to modify.' },
+    {
+      param: 'paths',
+      type: 'string',
+      description: 'The path of the property to set.',
+    },
+    { param: 'value', type: 'any', description: 'The value to set' },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const set: (object: object, paths: string, value: any) => void;
+```
+
+**Examples**
+
+```js
+onst obj = { };
+ set(obj, 'a.b[1].c', 3) // { a: { b: [undefined, { c: 3 }] } }
+```
+
+<br />
+
+## values
+
+> Create an array of a given object's own enumerable string-keyed property values.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'object',
+      type: { value: 'Collection', link: '../types#Collection' },
+      description: 'The object to extract values',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    { type: 'any[]', description: 'Returns the array of property values.' },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const values: <T = any>(object: Collection<T>) => T[];
+```
+
+**Examples**
+
+```js
+const object = { a: 1, b: '2' };
+const results = values(object); // [1, '2']
+```
+
+<br />
+
+## valuesIn
+
+> Create an array of a given object's own and inherited enumerable string-keyed property values.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'object',
+      type: { value: 'Collection', link: '../types#Collection' },
+      description: 'The object to extract values',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    { type: 'any[]', description: 'Returns the array of property values.' },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare const valuesIn: <T = any>(object: Collection<T>) => T[];
+```
+
+**Examples**
+
+```js
+function Foo() {
+  this.a = 1;
+  this.b = 2;
+}
+Foo.prototype.c = 3;
+valuesIn(new Foo()); // [1, 2, 3]
+```

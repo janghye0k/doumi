@@ -3,12 +3,159 @@ title: Math
 description: Math Methods
 ---
 
+import DocsTable from '@site/src/components/DocsTable';
+
 # Math Methods
 
-### average
+## average
 
-### between
+> Computes the average of the values
 
-### clamp
+**Since**: _0.1.0_
 
-### sum
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'value',
+      type: 'number[]',
+      description: 'The values to calculate.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'number', description: 'Returns the average of values' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function average(values: number[]): number;
+```
+
+**Examples**
+
+```js
+average([1, 2, 3]); // 2
+```
+
+<br />
+
+## between
+
+> Checks if n is between start and up to end
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'number', type: 'number', description: 'The number to check.' },
+    { param: 'start', type: 'number', description: 'The start of the range.' },
+    { param: 'end', type: 'number', description: 'The end of the range.' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Returns `true` if number is in the range, else `false`.',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare function between(number: number, start: number, end: number): boolean;
+```
+
+**Examples**
+
+```js
+between(3, 1, 5); // true
+between(8, 1, 5); // false
+```
+
+<br />
+
+## clamp
+
+> Clamp number
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    { param: 'number', type: 'number', description: 'The number to clamp' },
+    { param: 'lower', type: 'number', description: 'The lower bound' },
+    { param: 'upper', type: 'number', description: 'The upper bound' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'number', description: 'Returns the clamped number' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function clamp(number: number, lower: number, upper: number): number;
+```
+
+**Examples**
+
+```js
+clamp(3, 1, 5); // 3
+clamp(8, 1, 5); // 5
+```
+
+<br />
+
+## sum
+
+> Computes the sum of the values
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'value',
+      type: 'number[]',
+      description: 'The values to calculate.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'number', description: 'Returns the sum of `values`' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function sum(values: number[]): number;
+```
+
+**Examples**
+
+```js
+sum([1, 2, 3]); // 6
+```

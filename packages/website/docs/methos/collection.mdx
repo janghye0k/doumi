@@ -3,24 +3,626 @@ title: Collection
 description: Collection Methods
 ---
 
+import DocsTable from '@site/src/components/DocsTable';
+
 # Collection Methods
 
-### every
+## every
 
-### filter
+> Checks if predicate returns truthy for all element of collection.
 
-### find
+**Since**: _0.1.0_
 
-### forEach
+**Arguments**
 
-### forEachRight
+<DocsTable
+  datas={[
+    {
+      param: 'collection',
+      type: { value: 'Collection', link: '../types#collection' },
+      description: 'The collection to iterate over.',
+    },
+    {
+      param: 'predicate',
+      type: 'Function',
+      description: 'The function invoked per iteration.',
+    },
+  ]}
+/>
 
-### groupBy
+**Returns**
 
-### map
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description:
+        'Returns true if all elements pass the predicate check, else false.',
+    },
+  ]}
+/>
 
-### reduce
+**Declaration**
 
-### reduceRight
+```ts
+declare function every<T extends ArrayLike<any>>(
+  collection: T,
+  predicate: (value: ArrayLikeValue<T>, index: number, collection: T) => boolean
+): boolean;
+declare function every<T extends Dictionary<any>>(
+  collection: T,
+  predicate: (value: DictionaryValue<T>, key: string, collection: T) => boolean
+): boolean;
+```
 
-### some
+**Examples**
+
+```js
+const arr = [1, 2, 5];
+every(arr, (value) => value < 10); // true
+
+const obj = { a: 1, b: 2 };
+every(arr, (_, key) => key !== 'a'); // false
+```
+
+<br />
+
+## filter
+
+> Iterates over elements of collection, returning an array of all elements predicate returns truthy for
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'collection',
+      type: { value: 'Collection', link: '../types#collection' },
+      description: 'The collection to iterate over',
+    },
+    {
+      param: 'predicate',
+      type: 'Function',
+      description: 'The function invoked per iteration',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'any[]', description: 'Returns the new filterd array' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function filter<T extends ArrayLike<any>>(
+  collection: T,
+  predicate: (value: ArrayLikeValue<T>, index: number, collection: T) => boolean
+): ArrayLikeValue<T>[];
+declare function filter<T extends Dictionary<any>>(
+  collection: T,
+  predicate: (value: DictionaryValue<T>, key: string, collection: T) => boolean
+): DictionaryValue<T>[];
+```
+
+**Examples**
+
+```js
+const arr = [1, 2, 3];
+filter(arr, (value, index) => index === 1); // [1, 3]
+
+const obj = { a: 1, b: 'str' };
+filter(obj, (value, key) => typeof value === 'string'); // ['str']
+```
+
+<br />
+
+## find
+
+> Iterates over elements of collection, returning the first element predicate returns truthy for.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'collection',
+      type: { value: 'Collection', link: '../types#collection' },
+      description: 'The collection to iterate over.',
+    },
+    {
+      param: 'predicate',
+      type: 'Function',
+      description: 'The function invoked per iteration.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description: 'Returns the matched element, else `undefined`.',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare function find<T extends ArrayLike<any>>(
+  collection: T,
+  predicate: (value: ArrayLikeValue<T>, index: number, collection: T) => boolean
+): ArrayLikeValue<T> | undefined;
+declare function find<T extends Dictionary<any>>(
+  collection: T,
+  predicate: (value: DictionaryValue<T>, key: string, collection: T) => boolean
+): DictionaryValue<T> | undefined;
+```
+
+**Examples**
+
+```js
+const arr = [1, 2, 13];
+find(arr, (value) => value > 10); // 13
+
+const obj = { a: 1, b: 2 };
+find(arr, (_, key) => key === 'c'); // undefined
+```
+
+<br />
+
+## forEach
+
+> Iterates over elements of collection and invokes iteratee for each element.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'collection',
+      type: { value: 'Collection', link: '../types#collection' },
+      description: 'The collection to iterate over.',
+    },
+    {
+      param: 'callback',
+      type: 'Function',
+      description: 'The function invoked per iteration.',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare function forEach<T extends ArrayLike<any>>(
+  collection: T,
+  callback: (value: ArrayLikeValue<T>, index: number, collection: T) => void
+): void;
+declare function forEach<T extends Dictionary<any>>(
+  collection: T,
+  callback: (value: DictionaryValue<T>, key: string, collection: T) => void
+): void;
+```
+
+**Examples**
+
+```js
+const arr = [1];
+forEach(arr, (value, index) => console.log(value, index)); // 1, 0
+
+const obj = { a: 1 };
+forEach(obj, (value, key) => console.log(value, key)); // 1, 'a'
+```
+
+<br />
+
+## forEachRight
+
+> Iterates over elements of collection and invokes iteratee for each element.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'collection',
+      type: { value: 'Collection', link: '../types#collection' },
+      description: 'The collection to iterate over.',
+    },
+    {
+      param: 'callback',
+      type: 'Function',
+      description: 'The function invoked per iteration.',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare function forEachRight<T extends ArrayLike<any>>(
+  collection: T,
+  callback: (value: ArrayLikeValue<T>, index: number, collection: T) => void
+): void;
+declare function forEachRight<T extends Dictionary<any>>(
+  collection: T,
+  callback: (value: DictionaryValue<T>, key: string, collection: T) => void
+): void;
+```
+
+**Examples**
+
+```js
+const arr = [1];
+forEachRight(arr, (value, index) => console.log(value, index)); // 1, 0
+
+const obj = { a: 1 };
+forEachRight(obj, (value, key) => console.log(value, key)); // 1, 'a'
+```
+
+<br />
+
+## groupBy
+
+> Iterates over elements of collection and invokes iteratee for each element.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'collection',
+      type: { value: 'Collection', link: '../types#collection' },
+      description: 'The collection to iterate over.',
+    },
+    {
+      param: 'callback',
+      type: 'Function',
+      description: 'The function invoked per iteration.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'object[]>', description: 'Returns new grouped array' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function groupBy<T extends ArrayLike<any>>(
+  collection: T,
+  callback: (value: ArrayLikeValue<T>, index: number, collection: T) => string
+): Record<string, ArrayLikeValue<T>[]>;
+declare function groupBy<T extends Dictionary<any>>(
+  collection: T,
+  callback: (value: DictionaryValue<T>, key: string, collection: T) => string
+): Record<string, DictionaryValue<T>[]>;
+```
+
+**Examples**
+
+```js
+const students = [
+  { name: 'john', class: 'A', score: 100 },
+  { name: 'alice', class: 'B', score: 91 },
+  { name: 'smith', class: 'C', score: 65 },
+  { name: 'gale', class: 'A', score: 74 },
+];
+
+const results = groupBy(students, (value) =>
+  value.score < 70 ? 'fail' : 'pass'
+);
+results.fail; // [{ name: 'smith', class: 'C', score: 65 }]
+results.pass.length; // 3
+```
+
+<br />
+
+## map
+
+> Iterates over elements of collection and invokes iteratee for each element.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'collection',
+      type: { value: 'Collection', link: '../types#collection' },
+      description: 'The collection to iterate over.',
+    },
+    {
+      param: 'callback',
+      type: 'Function',
+      description: 'The function invoked per iteration.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'any[]', description: 'Returns the new mapped array.' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function map<T = any, O extends ArrayLike<any> = ArrayLike<any>>(
+  collection: O,
+  callback: (value: ArrayLikeValue<O>, index: number, collection: O) => T
+): T[];
+declare function map<T = any, O extends Dictionary<any> = Dictionary<any>>(
+  collection: O,
+  callback: (value: DictionaryValue<O>, key: string, collection: O) => T
+): T[];
+```
+
+**Examples**
+
+```js
+const arr = [1, 2, 3];
+map(arr, (value, index) => value + index); // [1, 3, 5]
+
+const obj = { a: 1, b: 2, c: 3 };
+map(obj, (value, key) => value + key); // ['a1', 'b2', 'c3']
+```
+
+<br />
+
+## reduce
+
+> Executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
+
+The first time that the callback is run there is no "return value of the previous calculation". If supplied, an initial value may be used in its place. Otherwise the collection's first element is used as the initial value
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'collection',
+      type: { value: 'Collection', link: '../types#collection' },
+      description: 'The collection to iterate over.',
+    },
+    {
+      param: 'reducer',
+      type: 'Function',
+      description: 'The function invoked per iteration.',
+    },
+    { param: '[accumulator]', type: 'any', description: 'The initial value.' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'any', description: 'Returns the accumulated value.' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function reduce<T extends ArrayLike<any> = ArrayLike<any>>(
+  collection: T,
+  reducer: (
+    accumulator: ArrayLikeValue<T>,
+    value: ArrayLikeValue<T>,
+    index: number,
+    collection: T
+  ) => ArrayLikeValue<T>,
+  accumulator?: ArrayLikeValue<T>
+): ArrayLikeValue<T>;
+declare function reduce<T extends ArrayLike<any> = ArrayLike<any>, V = any>(
+  collection: T,
+  reducer: (
+    accumulator: V,
+    value: ArrayLikeValue<T>,
+    index: number,
+    collection: T
+  ) => V,
+  accumulator: V
+): V;
+declare function reduce<T extends Dictionary<any> = Dictionary<any>>(
+  collection: T,
+  reducer: (
+    accumulator: DictionaryValue<T>,
+    value: DictionaryValue<T>,
+    key: string,
+    collection: T
+  ) => DictionaryValue<T>,
+  accumulator?: DictionaryValue<T>
+): DictionaryValue<T>;
+declare function reduce<T extends Dictionary<any> = Dictionary<any>, V = any>(
+  collection: T,
+  reducer: (
+    accumulator: V,
+    value: DictionaryValue<T>,
+    key: string,
+    collection: T
+  ) => V,
+  accumulator: V
+): V;
+```
+
+**Examples**
+
+```js
+const arr = [1, 2, 3];
+reduce(arr, (acc, value) => `${acc}_${value}`, ''); // '_1_2_3'
+```
+
+<br />
+
+## reduceRight
+
+> Executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
+
+The first time that the callback is run there is no "return value of the previous calculation". If supplied, an initial value may be used in its place. Otherwise the collection's last element is used as the initial value
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'collection',
+      type: { value: 'Collection', link: '../types#collection' },
+      description: 'The collection to iterate over.',
+    },
+    {
+      param: 'reducer',
+      type: 'Function',
+      description: 'The function invoked per iteration.',
+    },
+    { param: '[accumulator]', type: 'any', description: 'The initial value.' },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'any', description: 'Returns the accumulated value.' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function reduceRight<T extends ArrayLike<any> = ArrayLike<any>>(
+  collection: T,
+  reducer: (
+    accumulator: ArrayLikeValue<T>,
+    value: ArrayLikeValue<T>,
+    index: number,
+    collection: T
+  ) => ArrayLikeValue<T>,
+  accumulator?: ArrayLikeValue<T>
+): ArrayLikeValue<T>;
+declare function reduceRight<
+  T extends ArrayLike<any> = ArrayLike<any>,
+  V = any,
+>(
+  collection: T,
+  reducer: (
+    accumulator: V,
+    value: ArrayLikeValue<T>,
+    index: number,
+    collection: T
+  ) => V,
+  accumulator: V
+): V;
+declare function reduceRight<T extends Dictionary<any> = Dictionary<any>>(
+  collection: T,
+  reducer: (
+    accumulator: DictionaryValue<T>,
+    value: DictionaryValue<T>,
+    key: string,
+    collection: T
+  ) => DictionaryValue<T>,
+  accumulator?: DictionaryValue<T>
+): DictionaryValue<T>;
+declare function reduceRight<
+  T extends Dictionary<any> = Dictionary<any>,
+  V = any,
+>(
+  collection: T,
+  reducer: (
+    accumulator: V,
+    value: DictionaryValue<T>,
+    key: string,
+    collection: T
+  ) => V,
+  accumulator: V
+): V;
+```
+
+**Examples**
+
+```js
+const arr = [1, 2, 3];
+reduceRight(arr, (acc, value) => `${acc}_${value}`, ''); // '_3_2_1'
+```
+
+<br />
+
+## some
+
+> Checks if predicate returns truthy for any element of collection.
+
+**Since**: _0.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'collection',
+      type: { value: 'Collection', link: '../types#collection' },
+      description: 'The collection to iterate over.',
+    },
+    {
+      param: 'predicate',
+      type: 'Function',
+      description: 'The function invoked per iteration.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[
+    {
+      type: 'boolean',
+      description:
+        'Returns true if any element passes the predicate check, else false.',
+    },
+  ]}
+/>
+
+**Declaration**
+
+```ts
+declare function some<T extends ArrayLike<any>>(
+  collection: T,
+  predicate: (value: ArrayLikeValue<T>, index: number, collection: T) => boolean
+): boolean;
+declare function some<T extends Dictionary<any>>(
+  collection: T,
+  predicate: (value: DictionaryValue<T>, key: string, collection: T) => boolean
+): boolean;
+```
+
+**Examples**
+
+```js
+const arr = [1, 2, 13];
+some(arr, (value) => value > 10); // true
+
+const obj = { a: 1, b: 2 };
+some(arr, (_, key) => key === 'c'); // false
+```
