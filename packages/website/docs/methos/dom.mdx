@@ -125,7 +125,9 @@ declare function create$<
 
 // Types
 
-type CreateOptions<T> = Partial<Writable<OmitFunction<T>>> &
+type CreateOptions<T> = Partial<
+  Omit<Writable<OmitFunction<T>>, keyof CreateCustomOptions>
+> &
   CreateCustomOptions;
 
 type CreateCustomOptions = {

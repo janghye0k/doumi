@@ -85,7 +85,7 @@ function DemoPage({ libSource }) {
       `;
       setSrcDoc((cur) => (cur === doc ? doc + '  ' : doc));
       consoleRef.current?.clearLogs();
-    }, 1000),
+    }, 500),
     []
   );
 
