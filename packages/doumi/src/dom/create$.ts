@@ -21,7 +21,9 @@ type FunctionKeys<T> = {
 
 type OmitFunction<T> = { [P in Exclude<keyof T, FunctionKeys<T>>]: T[P] };
 
-type CreateOptions<T> = Partial<Writable<OmitFunction<T>>> &
+type CreateOptions<T> = Partial<
+  Omit<Writable<OmitFunction<T>>, keyof CreateCustomOptions>
+> &
   CreateCustomOptions;
 
 type CreateCustomOptions = {
