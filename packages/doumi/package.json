@@ -41,7 +41,8 @@
     "test:only": "jest",
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --collectCoverageFrom=\"src/**/*.js\" --coverage",
-    "test": "pnpm test:coverage"
+    "test": "pnpm test:coverage",
+    "prepublish": "pnpm build"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.4",

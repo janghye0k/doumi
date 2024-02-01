@@ -1,4 +1,5 @@
-import { debounce, sleep, throttle } from 'function';
+import { debounce, sleep, throttle, times } from 'function';
+import { describe } from 'node:test';
 
 describe('FUNCTION TEST', () => {
   describe('debounce', () => {
@@ -86,5 +87,11 @@ describe('FUNCTION TEST', () => {
       await sleep(250);
       expect(count).toBe(1);
     });
+  });
+
+  it('times', () => {
+    expect(JSON.stringify(times(3, Boolean))).toBe(
+      JSON.stringify([false, true, true])
+    );
   });
 });

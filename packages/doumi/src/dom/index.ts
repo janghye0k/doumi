@@ -4,6 +4,7 @@ export { default as on } from './on';
 export { default as off } from './off';
 export { default as bind$ } from './bind$';
 export { default as create$ } from './create$';
+export { default as useStorage } from './useStorage';
 
 export type { AriaRole, Evt, EvtListener };
 
