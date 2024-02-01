@@ -587,7 +587,7 @@ isNull(true); // false
 **Declaration**
 
 ```ts
-declare const isNullish: (value: unknown) => boolean;
+declare const isNullish: (value: unknown) => value is null | undefined;
 ```
 
 **Examples**

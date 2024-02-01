@@ -8,7 +8,7 @@
  * tagType({}) // 'Object'
  * tagType(1) // 'Number'
  */
-const tagType = (value: any) =>
+const tagType = (value: any): string =>
   Object.prototype.toString.call(value).slice(`[object `.length, -1);
 
 export default tagType;

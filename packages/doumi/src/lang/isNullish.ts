@@ -12,6 +12,7 @@ import isUndefined from './isUndefined';
  * isNullish(undefined) // true
  * isNullish(0) // false
  */
-const isNullish = (value: unknown) => isNull(value) || isUndefined(value);
+const isNullish = (value: unknown): value is null | undefined =>
+  isNull(value) || isUndefined(value);
 
 export default isNullish;
