@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/janghye0k/doumi/compare/v1.0.1...v1.0.2) (2024-02-01)
+
+### Bug Fixes
+
+- DOM create$ - options type error fix ([db417e1](https://github.com/janghye0k/doumi/commit/db417e19a1272888d74e353b75f30e5e1a915523))
+- website demo console lib url ([e30ff9f](https://github.com/janghye0k/doumi/commit/e30ff9febced48d45722438f1beb0c425f6d2c83))
+
+### Features
+
+- change create$ options type & demo page refresh delay ([a44b4ed](https://github.com/janghye0k/doumi/commit/a44b4ed2997d1f3ab395e2f9491ed187ed5d7171))
+
 ## [1.0.1](https://github.com/janghye0k/doumi/compare/v1.0.0...v1.0.1) (2024-01-31)
 
 ### Bug Fixes
