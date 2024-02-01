@@ -372,3 +372,64 @@ document.body.click(); // 'hi'
 off(document.body, 'click', handler);
 document.body.click(); //
 ```
+
+<br />
+
+## useStorage
+
+> Create storage. For easy to use browser localStorage(or sessionStorage)
+
+**Since**: _1.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'storageType',
+      type: "'local' | 'session'",
+      description: 'The storage to use.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable datas={[{ type: 'Storage', description: 'Returns storage' }]} />
+
+**Declaration**
+
+```ts
+declare function useStorage(storageType?: 'local' | 'session'): Storage;
+
+type Storage = {
+  /** Returns the current value associated with the given key, or null if the given key does not exist. */
+  get<T, V = null>(key: string, defaultValue?: V): T | V;
+  /** Sets the value of the pair identified by key to value, creating a new key/value pair if none existed for key previously. */
+  set(key: string, value: any): void;
+  /** Removes the key/value pair with the given key, if a key/value pair with the given key exists. */
+  remove(key: string): void;
+  /** Removes all key/value pairs, if there are any. */
+  clear(): void;
+};
+```
+
+**Examples**
+
+```js
+const storage = useStorage();
+storage.get('name'); // null
+storage.get('name', 'Who are you?'); // 'Who are you?'
+
+storage.set('name', 'Kim');
+storage.get('name'); // 'Kim'
+
+storage.set('data', { x: 1, y: 10 }); // Save stringify value, '{ "x": 1, "y": 10 }'
+storage.get('data'); // Get parse value ,{ x: 1, y: 10 }
+
+storage.remove('name');
+storage.get('name'); // null
+
+storage.clear();
+storage.get('data'); // null
+```

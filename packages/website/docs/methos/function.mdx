@@ -178,3 +178,51 @@ window.addEventListener('scroll', throttled);
 // You can cancel the trailing throttled invocation.
 throttled.cancel();
 ```
+
+<br />
+
+## times
+
+> Invokes the iteratee n times, returning an array of the results of each invocation.
+>
+> The iteratee is invoked with one argument; (index).
+
+**Since**: _1.1.0_
+
+**Arguments**
+
+<DocsTable
+  datas={[
+    {
+      param: 'count',
+      type: 'number',
+      description: 'The number of times to invoke iteratee.',
+    },
+    {
+      param: 'fn',
+      type: 'Function',
+      description: 'The function invoked per iteration.',
+    },
+  ]}
+/>
+
+**Returns**
+
+<DocsTable
+  datas={[{ type: 'any[]', description: 'Returns the array of results.' }]}
+/>
+
+**Declaration**
+
+```ts
+declare function times<Fn extends (...args: any[]) => any>(
+  count: number,
+  fn: Fn
+): ReturnType<Fn>[];
+```
+
+**Examples**
+
+```js
+times(3, Boolean); // [false, true, true]
+```
