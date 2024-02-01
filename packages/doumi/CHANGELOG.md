@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/janghye0k/doumi/compare/v1.1.0...v1.1.1) (2024-02-01)
+
+### Bug Fixes
+
+- isNullish - return types ([2a61b08](https://github.com/janghye0k/doumi/commit/2a61b086cd5cc8a40e9c5fcaf7824b2b63982bd8))
+
 # [1.1.0](https://github.com/janghye0k/doumi/compare/v1.0.2...v1.1.0) (2024-02-01)
 
 ### Features
