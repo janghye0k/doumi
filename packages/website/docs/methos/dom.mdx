@@ -51,25 +51,25 @@ declare function bind$<
   K extends MouseEventKeys,
   T extends Element = HTMLElement,
 >(
-  $element: Element,
+  $element: Window | Document | Element,
   eventType: K,
   selector: string,
   listener: EvtListener<K, T>,
-  condition: BindCondition
-): void;
+  condition?: BindCondition
+);
 
 // Types
 
 /**
  * Callback function that determine whether to fire an event listener
  * @callback BindCondition
- * @param {Element} parent The parent element where the event is actually registered
+ * @param {Window | Document | Element} parent The parent element where the event is actually registered
  * @param {Element} target The selector element on which to fire the event.
  * @returns {boolean} Whether to fire an event
  */
-type BindCondition<P extends Element = Element, T extends Element = Element> = (
-  parent: P,
-  target: T
+type BindCondition = (
+  parent: Window | Document | Element,
+  target: Element
 ) => boolean;
 
 type MouseEventKeys =
@@ -185,8 +185,8 @@ const $div = create$('div', { className: 'my-class', innerHTML: 'welcome' });
       description: 'A string containing one or more selectors to match.',
     },
     {
-      param: '[element]',
-      type: 'Element',
+      param: '[element = document]',
+      type: 'Element | Document',
       description: 'The target element to find selector',
     },
   ]}
@@ -194,14 +194,22 @@ const $div = create$('div', { className: 'my-class', innerHTML: 'welcome' });
 
 **Returns**
 
-<DocsTable datas={[{ type: 'Element | null', description: '' }]} />
+<DocsTable
+  datas={[
+    {
+      type: 'Element | null',
+      description:
+        'Returns the first element that is a descendant of node that matches selectors.',
+    },
+  ]}
+/>
 
 **Declaration**
 
 ```ts
 declare function find$<T extends Element = HTMLElement>(
   selector: string,
-  element?: Element
+  element?: Element | Document
 ): T | null;
 ```
 
@@ -229,8 +237,8 @@ find$('.some-class');
       description: 'A string containing one or more selectors to match.',
     },
     {
-      param: '[element]',
-      type: 'Element',
+      param: '[element = document]',
+      type: 'Element | Document',
       description: 'The target element to find selector',
     },
   ]}
@@ -253,7 +261,7 @@ find$('.some-class');
 ```ts
 declare function findAll$<T extends Element = HTMLElement>(
   selector: string,
-  element?: Element
+  element?: Element | Document
 ): NodeListOf<T>;
 ```
 
@@ -275,7 +283,11 @@ const $items = findAll$('.some-item');
 
 <DocsTable
   datas={[
-    { param: 'element', type: 'T', description: 'The element to bind event' },
+    {
+      param: 'element',
+      type: 'Element | Window | Document',
+      description: 'The element to bind event',
+    },
     {
       param: 'eventType',
       type: 'string',
@@ -284,14 +296,14 @@ const $items = findAll$('.some-item');
     },
     {
       param: 'listener',
-      type: { value: 'EvtListener', link: '../types#EvtListener' },
+      type: '(event: Event) => any',
       description:
         'The object that receives a notification when an event of the specified type occurs.',
     },
     {
       param: '[options]',
       type: {
-        value: 'AddEventListenerOptions',
+        value: 'AddEventListenerOptions | boolean',
         link: 'https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options',
       },
       description:
@@ -303,15 +315,33 @@ const $items = findAll$('.some-item');
 **Declaration**
 
 ```ts
-declare const on: <
+declare function on<
   K extends keyof HTMLElementEventMap,
   T extends Element = HTMLElement,
 >(
   element: T,
   eventType: K,
   listener: EvtListener<K, T>,
-  options?: AddEventListenerOptions
-) => void;
+  options?: AddEventListenerOptions | boolean
+): void;
+declare function on<K extends keyof WindowEventMap, T = Window>(
+  element: T,
+  eventType: K,
+  listener: (this: T, event: WindowEventMap[K]) => any,
+  options?: AddEventListenerOptions | boolean
+): void;
+declare function on<K extends keyof DocumentEventMap, T = Document>(
+  element: T,
+  eventType: K,
+  listener: (this: T, event: DocumentEventMap[K]) => any,
+  options?: AddEventListenerOptions | boolean
+): void;
+declare function on<T extends Window | Document | Element>(
+  element: T,
+  eventType: string,
+  listener: (this: T, event: Event) => any,
+  options?: AddEventListenerOptions | boolean
+): void;
 ```
 
 **Examples**
@@ -334,7 +364,11 @@ document.body.click(); // 'hi'
 
 <DocsTable
   datas={[
-    { param: 'element', type: 'T', description: 'The element to unbind event' },
+    {
+      param: 'element',
+      type: 'Element | Window | Document',
+      description: 'The element to unbind event',
+    },
     {
       param: 'eventType',
       type: 'string',
@@ -343,7 +377,7 @@ document.body.click(); // 'hi'
     },
     {
       param: 'listener',
-      type: { value: 'EvtListener', link: '../types#EvtListener' },
+      type: '(event: Event) => any',
       description:
         'The object that receives a notification when an event of the specified type occurs.',
     },
@@ -353,14 +387,33 @@ document.body.click(); // 'hi'
 **Declaration**
 
 ```ts
-declare const off: <
+declare function off<
   K extends keyof HTMLElementEventMap,
   T extends Element = HTMLElement,
 >(
   element: T,
   eventType: K,
-  listener: EvtListener<K, T>
-) => void;
+  listener: EvtListener<K, T>,
+  options?: AddEventListenerOptions | boolean
+): void;
+declare function off<K extends keyof WindowEventMap, T = Window>(
+  element: T,
+  eventType: K,
+  listener: (this: T, event: WindowEventMap[K]) => any,
+  options?: AddEventListenerOptions | boolean
+): void;
+declare function off<K extends keyof DocumentEventMap, T = Document>(
+  element: T,
+  eventType: K,
+  listener: (this: T, event: DocumentEventMap[K]) => any,
+  options?: AddEventListenerOptions | boolean
+): void;
+declare function off<T extends Window | Document | Element>(
+  element: T,
+  eventType: string,
+  listener: (this: T, event: Event) => any,
+  options?: AddEventListenerOptions | boolean
+): void;
 ```
 
 **Examples**
