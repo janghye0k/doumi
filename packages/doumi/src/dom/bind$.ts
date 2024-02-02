@@ -6,13 +6,13 @@ import on from './on';
 /**
  * Callback function that determine whether to fire an event listener
  * @callback BindCondition
- * @param {Element} parent The parent element where the event is actually registered
+ * @param {Window | Document | Element} parent The parent element where the event is actually registered
  * @param {Element} target The selector element on which to fire the event.
  * @returns {boolean} Whether to fire an event
  */
-type BindCondition<P extends Element = Element, T extends Element = Element> = (
-  parent: P,
-  target: T
+type BindCondition = (
+  parent: Window | Document | Element,
+  target: Element
 ) => boolean;
 
 type MouseEventKeys<T = HTMLElementEventMap> = {
@@ -34,13 +34,18 @@ type MouseEventKeys<T = HTMLElementEventMap> = {
  * bind$(document.body, 'click', '.some-selector', (event) => console.log(event))
  */
 function bind$<K extends MouseEventKeys, T extends Element = HTMLElement>(
-  $element: Element,
+  $element: Window | Document | Element,
   eventType: K,
   selector: string,
   listener: EvtListener<K, T>,
-  condition: BindCondition
+  condition?: BindCondition
 ) {
-  const children = Array.from(findAll$(selector, $element));
+  const children = Array.from(
+    findAll$(
+      selector,
+      (tagType($element) === 'Window' ? window.document : $element) as Element
+    )
+  );
 
   let EvtClass: any;
 
@@ -49,7 +54,7 @@ function bind$<K extends MouseEventKeys, T extends Element = HTMLElement>(
     if (!$el) children.includes(target) ? target : null;
     return $el;
   };
-  on($element as T, eventType, (event) => {
+  on($element, eventType, (event) => {
     if (!EvtClass) {
       if (eventType === 'wheel') EvtClass = WheelEvent;
       else if (tagType(event) === 'PointerEvent') EvtClass = PointerEvent;
@@ -67,6 +72,7 @@ function bind$<K extends MouseEventKeys, T extends Element = HTMLElement>(
         configurable: true,
       })
     );
+
     listener.call($currentTarget, e);
   });
 }
