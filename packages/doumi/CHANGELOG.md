@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/janghye0k/doumi/compare/v1.1.2...v1.1.3) (2024-02-06)
+
+### Bug Fixes
+
+- get, set, has - find bracket strings and negative index path values ([fefa3eb](https://github.com/janghye0k/doumi/commit/fefa3eb4b2a0d31f7ec3a9a00d5f27d7cfcf36d4))
+
 ## [1.1.2](https://github.com/janghye0k/doumi/compare/v1.1.1...v1.1.2) (2024-02-02)
 
 ### Features
