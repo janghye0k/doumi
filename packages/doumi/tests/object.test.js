@@ -31,32 +31,45 @@ describe('OBJECT TEST', () => {
 
   describe('get', () => {
     const obj = { a: { b: [{}, { c: 3 }] } };
+    const pkg = { exports: { '.': { import: 'file' } } };
     it('should be return given paths value', () => {
       expect(get(obj, 'a.b[1].c')).toBe(3);
+      expect(get(pkg, 'exports["."].import')).toBe('file');
     });
     it('should return an undefined when an invalid path is provided', () => {
       expect(get(obj, 'a.b[1].d.e')).toBe(undefined);
+      expect(get(pkg, 'exports["."].empty')).toBe(undefined);
     });
   });
 
   describe('set', () => {
     const results = { a: { b: [{}, { c: 3 }] } };
     const obj = {};
+    const pkg = {};
     it('should set the value at the given path.', () => {
       set(results, 'a.b[0]', undefined);
-      expect(results.a.b[0]);
+      expect(results.a.b[0]).toBe(undefined);
+      set(pkg, 'exports["."].import', 'file');
+      expect(pkg.exports['.'].import).toBe('file');
     });
-    it('should return an undefined when an invalid path is provided', () => {
+    it('not initialized value of created array should be undefined', () => {
       set(obj, 'a.b[1].c', 3);
       expect(JSON.stringify(obj)).toBe(JSON.stringify(results));
+    });
+    it('can be set minus index value', () => {
+      set(obj, 'arr[-3]', 10);
+      expect(obj.arr.at(-3)).toBe(10);
+      expect(obj.arr.length).toBe(3);
     });
   });
 
   describe('has', () => {
     const obj = { a: { b: [{}, { c: 3 }] } };
+    const pkg = { exports: { '.': { import: 'file' } } };
     it('should be check given paths is exist', () => {
       expect(has(obj, 'a.b[1].c')).toBe(true);
       expect(has(obj, 'a.b[1].d.e')).toBe(false);
+      expect(has(pkg, 'exports["."].import')).toBe(true);
     });
   });
 

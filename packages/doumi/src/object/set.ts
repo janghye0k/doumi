@@ -1,7 +1,5 @@
 import { isArray, isObject } from '../lang';
-import { splitObjectPath } from './utils';
-
-const numRegex = /\d/g;
+import { isIndex, splitObjectPath } from './utils';
 
 /**
  * Sets the value at path of object.
@@ -11,24 +9,37 @@ const numRegex = /\d/g;
  * @param {*} value The value to set
  * @example
  *
- * onst obj = { };
+ * const obj = {};
  * set(obj, 'a.b[1].c', 3) // { a: { b: [undefined, { c: 3 }] } }
+ *
+ * const arrMap = {}
+ * set(arrMap, 'arr[-3]', 10) // { arr: [10, undefined, undefined] }
  */
 const set = (object: object, paths: string, value: any) => {
-  let pointer: Record<string, any> = object;
+  let pointer: any = object;
   const items = splitObjectPath(paths);
   const size = items.length;
   for (let i = 0; i < size - 1; i++) {
     const item = items[i];
-    const nextItem = items[i + 1];
-    if (numRegex.test(nextItem)) {
-      if (!isArray(pointer[item])) pointer[item] = [];
-    } else {
-      if (!isObject(pointer[item])) pointer[item] = {};
+    const next = items[i + 1];
+    if (!isObject(pointer[item])) {
+      pointer[item] = isIndex(next) ? [] : {};
     }
     pointer = pointer[item];
   }
-  pointer[items[size - 1]] = value;
+  let last: any = items[size - 1];
+  if (isArray(pointer) && isIndex(last)) {
+    last = Number(last);
+    const max = pointer.length;
+    if (last < 0) {
+      const abs = Math.abs(last);
+      if (max < abs) {
+        pointer[abs - 1] = undefined;
+        last = 0;
+      } else last = max + last;
+    }
+  }
+  pointer[last] = value;
 };
 
 export default set;

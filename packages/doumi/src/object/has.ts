@@ -13,9 +13,12 @@ import { splitObjectPath } from './utils';
  * has('a') // true
  * has('a.b.c') // true
  * has('a.b.d') // false
+ *
+ * const pkg = { exports: { '.': { import: 'file' } } };
+ * has(pkg, 'exports["."].import') // true
  */
-const has = (object: object, paths: string) => {
-  /** @type {any} */
+const has = (object: object, paths: string): boolean => {
+  if (!isObject(object)) return false;
   let pointer = object;
   const splited = splitObjectPath(paths);
   const size = splited.length;

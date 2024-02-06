@@ -1,5 +1,5 @@
-import { isObject } from '../lang';
-import { splitObjectPath } from './utils';
+import { isArray, isObject } from '../lang';
+import { isIndex, splitObjectPath } from './utils';
 
 /**
  * Get the value at paths of object
@@ -12,13 +12,18 @@ import { splitObjectPath } from './utils';
  *
  * onst obj = { a: { b: [{}, { c: 3 }] } };
  * get(obj, 'a.b[1].c') // 3
+ *
+ * const pkg = { exports: { '.': { import: 'file' } } };
+ * get(pkg, 'exports["."].import') // 'file'
  */
 const get = <T = any>(object: object, paths: string): T | undefined => {
-  let pointer: Record<string, any> = object;
+  if (!isObject(object)) return undefined;
+  let pointer = object;
   const splited = splitObjectPath(paths);
   for (const item of splited) {
     if (!isObject(pointer)) return undefined;
-    pointer = pointer[item];
+    if (isArray(pointer) && isIndex(item)) pointer = pointer.at(Number(item));
+    else pointer = (pointer as any)[item];
   }
   return pointer as T;
 };
