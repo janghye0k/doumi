@@ -18,7 +18,7 @@ type Evt<
 type EvtListener<
   K extends keyof HTMLElementEventMap,
   T extends Element = HTMLElement,
-> = (this: T, event: Evt<K, T>) => any;
+> = (event: Evt<K, T>) => any;
 
 /** All the WAI-ARIA 1.1 role attribute values from https://www.w3.org/TR/wai-aria-1.1/#role_definitions */
 type AriaRole =

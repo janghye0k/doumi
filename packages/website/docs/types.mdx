@@ -142,5 +142,5 @@ type Evt<
 type EvtListener<
   K extends keyof HTMLElementEventMap,
   T extends Element = HTMLElement,
-> = (this: T, event: Evt<K, T>) => any;
+> = (event: Evt<K, T>) => any;
 ```
