@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://github.com/janghye0k/doumi/compare/v1.1.3...v1.1.4) (2024-02-15)
+
+### Bug Fixes
+
+- isEqual - now arraylike(object) value are passing index ([e1d0d16](https://github.com/janghye0k/doumi/commit/e1d0d160230384c00dedeff578927449f501b720))
+
 ## [1.1.3](https://github.com/janghye0k/doumi/compare/v1.1.2...v1.1.3) (2024-02-06)
 
 ### Bug Fixes
