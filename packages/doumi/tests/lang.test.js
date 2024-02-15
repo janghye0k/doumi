@@ -128,7 +128,7 @@ describe('CHECK TEST', () => {
   it('isEqual', () => {
     const obj = { a: 1 };
     expect(isEqual(obj, obj)).toBe(true);
-    expect(isEqual(obj, { ...obj })).toBe(true);
+    expect(isEqual(obj, { a: 1 })).toBe(true);
   });
   it('isError', () => {
     const map = new Map([

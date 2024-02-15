@@ -15,21 +15,21 @@ import tagType from './tagType';
  * const obj = { a: 1 };
  *
  * isEqual(obj, obj) // true
- * isEqual(obj, {...obj}) // false
+ * isEqual(obj, { a: 1 }) // true
  */
 const isEqual = (value: any, compare: any): boolean => {
   const valueType = tagType(value);
   if (valueType !== tagType(compare)) return false;
 
-  if (isArrayLike(value)) {
-    if (value.length !== compare.length) return false;
-    for (let i = 0; i < value.length; i++) {
-      if (!isEqual(value, compare)) return false;
-    }
-    return true;
-  }
-
   if (isObject(value)) {
+    if (isArrayLike(value)) {
+      if (value.length !== compare.length) return false;
+      for (let i = 0; i < value.length; i++) {
+        if (!isEqual(value[i], compare[i])) return false;
+      }
+      return true;
+    }
+
     if (
       isPlainObject(value) &&
       Object.keys(value).length !== Object.keys(compare).length
