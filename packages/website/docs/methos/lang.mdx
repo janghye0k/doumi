@@ -403,7 +403,7 @@ declare const isEqual: (value: any, compare: any) => boolean;
 const obj = { a: 1 };
 
 isEqual(obj, obj); // true
-isEqual(obj, { ...obj }); // false
+isEqual(obj, { a: 1 }); // true
 ```
 
 <br />
