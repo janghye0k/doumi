@@ -327,19 +327,19 @@ declare function on<
 declare function on<K extends keyof WindowEventMap, T = Window>(
   element: T,
   eventType: K,
-  listener: (this: T, event: WindowEventMap[K]) => any,
+  listener: (event: WindowEventMap[K]) => any,
   options?: AddEventListenerOptions | boolean
 ): void;
 declare function on<K extends keyof DocumentEventMap, T = Document>(
   element: T,
   eventType: K,
-  listener: (this: T, event: DocumentEventMap[K]) => any,
+  listener: (event: DocumentEventMap[K]) => any,
   options?: AddEventListenerOptions | boolean
 ): void;
 declare function on<T extends Window | Document | Element>(
   element: T,
   eventType: string,
-  listener: (this: T, event: Event) => any,
+  listener: (event: Event) => any,
   options?: AddEventListenerOptions | boolean
 ): void;
 ```
@@ -399,19 +399,19 @@ declare function off<
 declare function off<K extends keyof WindowEventMap, T = Window>(
   element: T,
   eventType: K,
-  listener: (this: T, event: WindowEventMap[K]) => any,
+  listener: (event: WindowEventMap[K]) => any,
   options?: AddEventListenerOptions | boolean
 ): void;
 declare function off<K extends keyof DocumentEventMap, T = Document>(
   element: T,
   eventType: K,
-  listener: (this: T, event: DocumentEventMap[K]) => any,
+  listener: (event: DocumentEventMap[K]) => any,
   options?: AddEventListenerOptions | boolean
 ): void;
 declare function off<T extends Window | Document | Element>(
   element: T,
   eventType: string,
-  listener: (this: T, event: Event) => any,
+  listener: (event: Event) => any,
   options?: AddEventListenerOptions | boolean
 ): void;
 ```

@@ -6,7 +6,7 @@ import type { EvtListener } from './index';
  * @template {*} [T = HTMLElement]
  * @param {T} element The element to unbind event
  * @param {string} eventType A case-sensitive string representing the event type to listen for.
- * @param {(this: T, event: Event) => any} listener The object that receives a notification when an event of the specified type occurs.
+ * @param {(event: Event) => any} listener The object that receives a notification when an event of the specified type occurs.
  * @example
  *
  * const handler = () => console.log('hi')
@@ -27,19 +27,19 @@ function off<
 function off<K extends keyof WindowEventMap, T = Window>(
   element: T,
   eventType: K,
-  listener: (this: T, event: WindowEventMap[K]) => any,
+  listener: (event: WindowEventMap[K]) => any,
   options?: AddEventListenerOptions | boolean
 ): void;
 function off<K extends keyof DocumentEventMap, T = Document>(
   element: T,
   eventType: K,
-  listener: (this: T, event: DocumentEventMap[K]) => any,
+  listener: (event: DocumentEventMap[K]) => any,
   options?: AddEventListenerOptions | boolean
 ): void;
 function off<T extends Window | Document | Element>(
   element: T,
   eventType: string,
-  listener: (this: T, event: Event) => any,
+  listener: (event: Event) => any,
   options?: AddEventListenerOptions | boolean
 ): void;
 function off<
