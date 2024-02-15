@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.6](https://github.com/janghye0k/doumi/compare/v1.1.5...v1.1.6) (2024-02-15)
+
+### Bug Fixes
+
+- remove this parameter in EvtListener ([294f597](https://github.com/janghye0k/doumi/commit/294f59725b9c25dc7d6ccbae2dd890da06083a86))
+
 ## [1.1.5](https://github.com/janghye0k/doumi/compare/v1.1.4...v1.1.5) (2024-02-15)
 
 ### Features
