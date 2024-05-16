@@ -53,7 +53,7 @@ function create$<
   const $el = document.createElement(tagName);
   const { id, className, classList, role, style, dataset, ...props } = options;
   if (id) $el.id = id;
-  if (className) $el.classList.add(className);
+  if (className) $el.classList.add(...className.trim().split(' '));
   if (Array.isArray(classList)) $el.classList.add(...classList);
   if (role) $el.role = role;
   if (style && tagType(style) === 'Object') {
