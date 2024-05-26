@@ -1,7 +1,18 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [1.1.7](https://github.com/janghye0k/doumi/compare/v1.1.3...v1.1.7) (2024-05-26)
+
+### Features
+
+- change dom methods (on, off) event-listener declaration ([b29b07c](https://github.com/janghye0k/doumi/commit/b29b07c5a21d63357b04a0cc77291ef7fbf194a9))
+
+### Bug Fixes
+
+- **create$:** resolving errors that occur when adding className ([0459ef2](https://github.com/janghye0k/doumi/commit/0459ef28e1144fa439acdda808a55c176815cdbf))
+- isEqual - now arraylike(object) value are passing index ([e1d0d16](https://github.com/janghye0k/doumi/commit/e1d0d160230384c00dedeff578927449f501b720))
+- remove this parameter in EvtListener ([294f597](https://github.com/janghye0k/doumi/commit/294f59725b9c25dc7d6ccbae2dd890da06083a86))
 
 ## [1.1.6](https://github.com/janghye0k/doumi/compare/v1.1.5...v1.1.6) (2024-02-15)
 
