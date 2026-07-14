@@ -1,19 +1,10 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "ES6",
-    "moduleResolution": "node",
-    "allowJs": true,
-    "strict": true,
-    "useUnknownInCatchVariables": false,
-    "types": ["node"],
-    "lib": ["ESNext", "DOM"],
-    "allowSyntheticDefaultImports": true,
     "outDir": "dist",
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "removeComments": false,
     "rootDir": "src",
+    "lib": ["ES2020", "DOM"],
+    "types": ["node"]
   },
-  "include": ["./src/**/*.ts", "./src/**/*.js"],
+  "include": ["src/**/*.ts"]
 }

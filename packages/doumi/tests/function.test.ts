@@ -1,5 +1,4 @@
 import { debounce, sleep, throttle, times } from 'function';
-import { describe } from 'node:test';
 
 describe('FUNCTION TEST', () => {
   describe('debounce', () => {

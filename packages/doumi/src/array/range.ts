@@ -17,7 +17,7 @@ function range(...args: [number] | [number, number]): number[] {
   if (args.length !== 1) {
     std = args[0];
     end = std + args[1];
-  } else (std = 0), (end = args[0]);
+  } else ((std = 0), (end = args[0]));
   for (let i = std; i < end; i++) arr.push(i);
   return arr;
 }

@@ -15,7 +15,7 @@ import {
   valuesIn,
 } from 'object';
 
-function Foo() {
+function Foo(this: any) {
   this.a = 1;
   this.b = 2;
 }
@@ -24,7 +24,7 @@ Foo.prototype.c = 3;
 describe('OBJECT TEST', () => {
   describe('assignIn', () => {
     it('should be assign prototype properties', () => {
-      const obj = assignIn({ x: 'x' }, new Foo());
+      const obj = assignIn({ x: 'x' }, new (Foo as any)());
       expect(obj['c']).toBe(3);
     });
   });
@@ -90,34 +90,34 @@ describe('OBJECT TEST', () => {
   });
 
   it('keys', () => {
-    const results = keys(new Foo());
+    const results = keys(new (Foo as any)());
     expect(results).toHaveLength(2);
     expect(typeof results[0]).toBe('string');
   });
   it('keysIn', () => {
-    const results = keysIn(new Foo());
+    const results = keysIn(new (Foo as any)());
     expect(results).toHaveLength(3);
     expect(typeof results[0]).toBe('string');
   });
 
   it('values', () => {
-    const results = values(new Foo());
+    const results = values(new (Foo as any)());
     expect(results).toHaveLength(2);
     expect(typeof results[0]).toBe('number');
   });
   it('valuesIn', () => {
-    const results = valuesIn(new Foo());
+    const results = valuesIn(new (Foo as any)());
     expect(results).toHaveLength(3);
     expect(typeof results[0]).toBe('number');
   });
   it('entries', () => {
-    const results = entries(new Foo());
+    const results = entries(new (Foo as any)());
     expect(results).toHaveLength(2);
     expect(typeof results[0][0]).toBe('number');
     expect(typeof results[0][1]).toBe('string');
   });
   it('entriesIn', () => {
-    const results = entriesIn(new Foo());
+    const results = entriesIn(new (Foo as any)());
     expect(results).toHaveLength(3);
     expect(typeof results[0][0]).toBe('number');
     expect(typeof results[0][1]).toBe('string');

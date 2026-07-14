@@ -51,3 +51,12 @@ in Browser:
 ```
 
 See the [package source](https://github.com/janghye0k/doumi/tree/main/packages/doumi) for more details.
+
+## Browser / Runtime Support
+
+Build output targets ES2015 syntax. However, the library uses runtime APIs introduced after ES2015:
+
+- `Array.prototype.includes` (ES2016)
+- `Object.values` (ES2017)
+
+If your target environment does not support these APIs, provide polyfills in your application.
